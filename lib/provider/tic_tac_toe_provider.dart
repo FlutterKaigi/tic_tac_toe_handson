@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tic_tac_toe_handson/model/tic_tac_toe.dart';
 
-final ticTacToeProvider = StateNotifierProvider<TicTacToeProvider, TicTacToe>((ref) {
+final ticTacToeProvider = StateNotifierProvider.autoDispose<TicTacToeProvider, TicTacToe>((ref) {
   return TicTacToeProvider();
 });
 
