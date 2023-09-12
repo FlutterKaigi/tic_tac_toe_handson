@@ -18,7 +18,7 @@ class Board extends ConsumerWidget {
             padding: const EdgeInsets.all(16),
             child: Text(
               _statusMessage(ticTacToe),
-              style: const TextStyle(fontSize: 24),
+              style: Theme.of(context).textTheme.headlineSmall,
             ),
           ),
           GridView.builder(
@@ -35,7 +35,7 @@ class Board extends ConsumerWidget {
               return GestureDetector(
                 onTap: () {
                   final winner = ticTacToe.getWinner();
-                  if (mark == '' && winner == '') {
+                  if (mark.isEmpty && winner.isEmpty) {
                     ref.read(ticTacToeProvider.notifier).placeMark(row, col);
                   }
                 },
@@ -53,8 +53,9 @@ class Board extends ConsumerWidget {
               );
             },
           ),
-          Padding(
-            padding: const EdgeInsets.all(16),
+          const SizedBox(height: 16),
+          SizedBox(
+            width: double.infinity,
             child: ElevatedButton(
               onPressed: () {
                 ref.read(ticTacToeProvider.notifier).resetBoard();
@@ -71,7 +72,7 @@ class Board extends ConsumerWidget {
     final winner = ticTacToe.getWinner();
     final isDraw = ticTacToe.isDraw();
 
-    if (winner != '') {
+    if (winner.isNotEmpty) {
       return '$winnerの勝ち';
     } else if (isDraw) {
       return '引き分けです';
