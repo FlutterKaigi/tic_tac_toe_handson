@@ -8,7 +8,7 @@ class Board extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final ticTacToe = ref.watch(ticTacToeProvider);
+    final ticTacToe = ref.watch(ticTacToeBoardProvider);
 
     return Padding(
       padding: const EdgeInsets.all(16),
@@ -36,7 +36,7 @@ class Board extends ConsumerWidget {
                 onTap: () {
                   final winner = ticTacToe.getWinner();
                   if (mark.isEmpty && winner.isEmpty) {
-                    ref.read(ticTacToeProvider.notifier).placeMark(row, col);
+                    ref.read(ticTacToeBoardProvider.notifier).placeMark(row, col);
                   }
                 },
                 child: Container(
@@ -58,7 +58,7 @@ class Board extends ConsumerWidget {
             width: double.infinity,
             child: ElevatedButton(
               onPressed: () {
-                ref.read(ticTacToeProvider.notifier).resetBoard();
+                ref.read(ticTacToeBoardProvider.notifier).resetBoard();
               },
               child: const Text('ゲームをリセット'),
             ),

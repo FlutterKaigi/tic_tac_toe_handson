@@ -1,12 +1,12 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:tic_tac_toe_handson/model/tic_tac_toe.dart';
 
-final ticTacToeProvider = StateNotifierProvider.autoDispose<TicTacToeProvider, TicTacToe>((ref) {
-  return TicTacToeProvider();
-});
+part 'tic_tac_toe_provider.g.dart';
 
-class TicTacToeProvider extends StateNotifier<TicTacToe> {
-  TicTacToeProvider() : super(TicTacToe.start());
+@riverpod
+class TicTacToeBoard extends _$TicTacToeBoard {
+  @override
+  TicTacToe build() => TicTacToe.start();
 
   placeMark(int row, int col) {
     state = state.placeMark(row, col);

@@ -1,16 +1,23 @@
-class TicTacToe {
-  final List<List<String>> board;
-  final String currentPlayer;
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'tic_tac_toe.freezed.dart';
+
+@freezed
+class TicTacToe with _$TicTacToe {
+  const TicTacToe._();
+
+  const factory TicTacToe({
+    required final List<List<String>> board,
+    required final String currentPlayer,
+  }) = _TicTacToe;
 
   factory TicTacToe.start() {
-    return TicTacToe._([
+    return const TicTacToe(board: [
       ['', '', ''],
       ['', '', ''],
       ['', '', ''],
-    ], 'X');
+    ], currentPlayer: 'X');
   }
-
-  TicTacToe._(this.board, this.currentPlayer);
 
   TicTacToe placeMark(int row, int col) {
     if (board[row][col].isEmpty) {
@@ -18,7 +25,7 @@ class TicTacToe {
       newBoard[row][col] = currentPlayer;
       String nextPlayer = currentPlayer == 'X' ? 'O' : 'X';
 
-      return TicTacToe._(newBoard, nextPlayer);
+      return TicTacToe(board: newBoard, currentPlayer: nextPlayer);
     }
     return this;
   }
