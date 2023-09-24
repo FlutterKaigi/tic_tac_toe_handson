@@ -1,21 +1,35 @@
-# FlutterKaigi 2023 ハンズオン
+# FlutterKaigi2023 ハンズオン
 
-FlutterKaigi 2023 本編とは別日の 10/26 にハンズオンを開催する。
+[FlutterKaigi2023](https://flutterkaigi.jp/2023/) 本編とは別日の 10/26(木)19:00~ にハンズオンを開催します。
+
+connpass のイベントページはこちらになります。
+
+https://flutterkaigi.connpass.com/event/293847/
 
 ## ハンズオン概要
 
-TBD
+今回はのテーマは **Riverpod** です。
+
+Flutter 開発における状態管理の手法として注目を集めている Riverpod の基本的な使い方を、三目並べアプリの作成を通して一緒に学んでいきましょう。後半のチャレンジ企画では、 Firebase のFirestore を使ったリアルタイム対戦機能の実装を予定しています。
+
+完成予定の画面は以下の通りです。
+
+> TODO: 画像を貼る
 
 ### 進め方
 
-[FlutterKaigi YouTube](https://www.youtube.com/channel/UC1JP6dPBmmccZto4LNz9KMw) チャンネル登録よろしくお願いします！
+ハンズオンは Zoom を使ってオンラインで行います。当日までに [connpassのイベントページ](https://flutterkaigi.connpass.com/event/293847/)に Zoom のリンクを記載しますので、そちらよりご入場ください。
 
-[@preview](https://www.youtube.com/watch?v=I2Cw9z6vHzk)
+また、ハンズオンの内容は録画して後日 YouTube に投稿します。チャンネル登録をよろしくお願いいたします！
 
-## アウトライン (予定)
+[FlutterKaigi YouTube](https://www.youtube.com/channel/UC1JP6dPBmmccZto4LNz9KMw)
+
+## ハンズオンの内容 (予定)
+
+ハンズオンは以下の流れで進めていきます。
 
 1. Riverpod の紹介
-2. アプリケーションの基本構造とゲームロジック
+2. ゲームロジックの実装
 3. UI の作成
 4. Riverpod の導入
 5. Firestore を用いたリアルタイム対戦機能 (チャレンジ企画)
