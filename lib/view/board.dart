@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tic_tac_toe_handson/model/tic_tac_toe.dart';
-import 'package:tic_tac_toe_handson/provider/tic_tac_toe_provider.dart';
-import 'package:tic_tac_toe_handson/repository/tic_tac_toe_repository.dart';
+import 'package:tic_tac_toe_handson/provider/get_tic_tac_toe_provider.dart';
+import 'package:tic_tac_toe_handson/provider/update_tic_tac_toe_provider.dart';
 
 class Board extends ConsumerWidget {
   const Board({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final ticTacToeStream = ref.watch(ticTacToeProvider);
+    final ticTacToeStream = ref.watch(getTicTacToeProvider);
 
     return ticTacToeStream.when(
       loading: () => const Center(child: CircularProgressIndicator()),
-      error: (error, __) => Center(child: Text('エラーが発生しました: ${error.toString()}')),
+      error: (error, __) =>
+          Center(child: Text('エラーが発生しました: ${error.toString()}')),
       data: (ticTacToe) {
         return Padding(
           padding: const EdgeInsets.all(16),
@@ -41,7 +42,11 @@ class Board extends ConsumerWidget {
                     onTap: () {
                       final winner = ticTacToe.getWinner();
                       if (mark.isEmpty && winner.isEmpty) {
-                        updateTicTacToe(ticTacToe.placeMark(row, col));
+                        ref.read(
+                          updateTicTacToeProvider(
+                            ticTacToe.placeMark(row, col),
+                          ),
+                        );
                       }
                     },
                     child: Container(
@@ -63,7 +68,9 @@ class Board extends ConsumerWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    updateTicTacToe(ticTacToe.resetBoard());
+                    ref.read(
+                      updateTicTacToeProvider(ticTacToe.resetBoard()),
+                    );
                   },
                   child: const Text('ゲームをリセット'),
                 ),
