@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       darkTheme: ThemeData.dark(),
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('FlutterKaigi2023 TicTacToe'),
+          title: const Text('FlutterKaigi 2023 - TicTacToe'),
         ),
         body: const Board(),
       ),
