@@ -12,7 +12,9 @@ class Board extends ConsumerWidget {
 
     return Padding(
       padding: const EdgeInsets.all(16),
-      child: Column(
+      child: SingleChildScrollView(child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Padding(
             padding: const EdgeInsets.all(16),
@@ -64,7 +66,7 @@ class Board extends ConsumerWidget {
             ),
           ),
         ],
-      ),
+      )),
     );
   }
 
