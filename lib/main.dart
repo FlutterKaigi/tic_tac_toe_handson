@@ -23,14 +23,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'FlutterKaigi2023 TicTacToe',
+      title: 'FlutterKaigi 2023 - TicTacToe',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       darkTheme: ThemeData.dark(),
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('FlutterKaigi2023 TicTacToe'),
+          title: const Text('FlutterKaigi 2023 - TicTacToe'),
         ),
         body: const Board(),
       ),

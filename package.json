@@ -1,0 +1,20 @@
+{
+  "name": "docs",
+  "version": "0.1.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "dev": "vitepress dev docs",
+    "build": "vitepress build docs",
+    "preview": "vitepress preview docs"
+  },
+  "dependencies": {
+    "vitepress": "^1.0.0-rc.13"
+  },
+  "devDependencies": {
+    "jsdom": "^22.1.0",
+    "@nekohack/markdown-it-link-preview": "^1.0.6",
+    "typescript": "^5.2.2",
+    "xmlhttprequest": "^1.8.0"
+  }
+}
