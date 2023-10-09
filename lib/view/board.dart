@@ -13,8 +13,7 @@ class Board extends ConsumerWidget {
 
     return ticTacToeStream.when(
       loading: () => const Center(child: CircularProgressIndicator()),
-      error: (error, __) =>
-          Center(child: Text('エラーが発生しました: ${error.toString()}')),
+      error: (error, __) => Center(child: Text('エラーが発生しました: ${error.toString()}')),
       data: (ticTacToe) {
         return Padding(
           padding: const EdgeInsets.all(16),

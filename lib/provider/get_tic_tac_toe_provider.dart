@@ -6,7 +6,7 @@ final getTicTacToeProvider = AutoDisposeStreamProvider<TicTacToe>(
   (ref) =>
       // 対戦相手同士のIDを設定する
       ref.watch(ticTacToeRepositoryProvider).get(
-            playerX: 'flutter',
-            playerO: 'kaigi',
+            playerX: 'Dash',
+            playerO: 'Sparky',
           ),
 );
