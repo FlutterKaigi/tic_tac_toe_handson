@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:tic_tac_toe_handson/model/tic_tac_toe.dart';
 
-class Board extends StatelessWidget {
+class Board extends StatefulWidget {
   const Board({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    final ticTacToe = TicTacToe.start();
+  State<StatefulWidget> createState() {
+    return _BoardState();
+  }
+}
 
+class _BoardState extends State<Board> {
+  TicTacToe ticTacToe = TicTacToe.start(playerX: 'Dash', playerO: 'Sparky');
+
+  @override
+  Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16),
       child: Column(
@@ -32,7 +39,12 @@ class Board extends StatelessWidget {
 
               return GestureDetector(
                 onTap: () {
-                  // マスをタップした際の処理
+                  setState(() {
+                    final winner = ticTacToe.getWinner();
+                    if (mark.isEmpty && winner.isEmpty) {
+                      ticTacToe = ticTacToe.placeMark(row, col);
+                    }
+                  });
                 },
                 child: Container(
                   decoration: BoxDecoration(
@@ -53,7 +65,9 @@ class Board extends StatelessWidget {
             width: double.infinity,
             child: ElevatedButton(
               onPressed: () {
-                // ゲームをリセットする処理
+                setState(() {
+                  ticTacToe = ticTacToe.resetBoard();
+                });
               },
               child: const Text('ゲームをリセット'),
             ),
