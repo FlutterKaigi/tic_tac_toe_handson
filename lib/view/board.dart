@@ -12,7 +12,8 @@ class Board extends ConsumerWidget {
 
     return Padding(
       padding: const EdgeInsets.all(16),
-      child: SingleChildScrollView(child: Column(
+      child: SingleChildScrollView(
+          child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -38,7 +39,7 @@ class Board extends ConsumerWidget {
                 onTap: () {
                   final winner = ticTacToe.getWinner();
                   if (mark.isEmpty && winner.isEmpty) {
-                    ref.read(ticTacToeProvider.notifier).placeMark(row, col);
+                    ref.read(ticTacToeProvider.notifier).state = ticTacToe.placeMark(row, col);
                   }
                 },
                 child: Container(
@@ -60,7 +61,7 @@ class Board extends ConsumerWidget {
             width: double.infinity,
             child: ElevatedButton(
               onPressed: () {
-                ref.read(ticTacToeProvider.notifier).resetBoard();
+                ref.read(ticTacToeProvider.notifier).state = ticTacToe.resetBoard();
               },
               child: const Text('ゲームをリセット'),
             ),
