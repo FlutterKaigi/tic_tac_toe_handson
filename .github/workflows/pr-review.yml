@@ -1,0 +1,21 @@
+name: PR review/test
+
+on:
+  pull_request:
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+      - name: Install dependencies
+        run: |
+          flutter pub get
+      - uses: invertase/github-action-dart-analyzer@v1
+      - name: Run tests
+        run: |
+          flutter test

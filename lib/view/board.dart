@@ -17,7 +17,7 @@ class Board extends ConsumerWidget {
       data: (ticTacToe) {
         return Padding(
           padding: const EdgeInsets.all(16),
-          child: Column(
+            child: SingleChildScrollView(child: Column(
             children: [
               Padding(
                 padding: const EdgeInsets.all(16),
@@ -76,8 +76,8 @@ class Board extends ConsumerWidget {
               ),
             ],
           ),
-        );
-      },
+        ));
+      }
     );
   }
 
