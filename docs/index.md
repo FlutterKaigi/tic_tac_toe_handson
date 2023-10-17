@@ -14,7 +14,7 @@ Flutter 開発における状態管理の手法として注目を集めている
 
 完成予定の画面は以下の通りです。
 
-![完成予定図](./top_application_sample.gif)
+![完成予定図](./public/top_application_sample.gif)
 
 ### 進め方
 
