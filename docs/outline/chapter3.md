@@ -76,14 +76,14 @@ class TicTacToe {
 前章までの作業は、flutter プロジェクトの新規作成とゲームロジックのモデルの新規追加までとなっています。  
 このためアプリの UIは、カウンターアプリのままですから、以下の手順で、三目並べを遊ぶための画面を作り上げていきます。
 
-1. main パッケージの修正  
-   プロジェクトにゲーム画面（`Board` ⇒ はじめは空コンテンツ）を新規追加して、  
-   元々のカウンターアプリから不要コードの削除とアプリタイトルの修正を行い、  
-   ホーム画面を `MyHomePage` からゲーム画面に差し替えます。  
+1. [main パッケージ](https://github.com/FlutterKaigi/tic_tac_toe_handson/blob/release/chapter2/lib/main.dart)の修正  
+   プロジェクトにゲーム画面（`Board` ⇒ はじめは空コンテンツ）を新規追加します。  
+   次に元々のカウンターアプリから不要コードの削除とアプリタイトルの修正を行い、
+   ホーム画面を `MyHomePage` からゲーム画面（はじめは空コンテンツ）に差し替えます。  
    <br/>
    <ul>
      main パッケージの修正<br/>
-     <img src="../images/chapter3/chapter_3_3_1.png" alt="main パッケージの修正" style="max-width:20%;">
+     <img src="../images/chapter3/chapter_3_3_1.png" alt="main パッケージの修正" style="max-width:40%;">
      <!--
      ![main パッケージの修正](../images/chapter3/chapter_3_3_1.png)
      -->
