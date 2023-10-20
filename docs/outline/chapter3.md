@@ -79,7 +79,7 @@ class TicTacToe {
 
 1. [main パッケージ](https://github.com/FlutterKaigi/tic_tac_toe_handson/blob/release/chapter2/lib/main.dart)の修正  
    プロジェクトにゲーム画面（`Board` ⇒ はじめは空コンテンツ）を新規追加します。  
-   次に元々のカウンターアプリから不要コードの削除とアプリタイトルの修正を行い、
+   次に元々のカウンターアプリから不要コードの削除とアプリタイトルの修正を行い、  
    ホーム画面を `MyHomePage` からゲーム画面（はじめは空コンテンツ）に差し替えます。  
    <br/>
    <ul>
