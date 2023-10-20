@@ -1,10 +1,10 @@
-# FlutterKaigi2023 ハンズオン
+# FlutterKaigi 2023 ハンズオン
 
-[FlutterKaigi2023](https://flutterkaigi.jp/2023/) 本編とは別日の 10/26(木)19:00~ にハンズオンを開催します。
+[FlutterKaigi 2023](https://flutterkaigi.jp/2023/) 本編とは別日の 10/26(木) 19:00 からハンズオンを開催します。
 
 connpass のイベントページはこちらになります。
 
-https://flutterkaigi.connpass.com/event/293847/
+[@preview](https://flutterkaigi.connpass.com/event/293847/)
 
 ## ハンズオン概要
 
@@ -22,7 +22,7 @@ Flutter 開発における状態管理の手法として注目を集めている
 
 また、ハンズオンの内容は録画して後日 YouTube に投稿します。チャンネル登録をよろしくお願いいたします！
 
-[FlutterKaigi YouTube](https://www.youtube.com/channel/UC1JP6dPBmmccZto4LNz9KMw)
+[@preview](https://www.youtube.com/channel/UC1JP6dPBmmccZto4LNz9KMw)
 
 ## ハンズオンの内容 (予定)
 
@@ -38,7 +38,10 @@ Flutter 開発における状態管理の手法として注目を集めている
 
 昨年 同様、今回も FlutterKaigi ハンズオンチーム一同、企画・製作しています。
 
-TBD
+- [okaryo](https://twitter.com/okaryoX): 現在は主にRubyやGoを仕事で扱っていますが、今もFlutterは大好きです！
+- [ちっぴー](https://twitter.com/chippy_ao): FlutterとFirebaseをよく扱っており、Riverpodは重宝しております！ハンズオンを通して学びを一緒に深めていきましょう👾
+- [robo](https://twitter.com/cch_robo): 既存 iOS/Android ネイティブアプリの Flutter リプレースに携わっております。Flutter の威力を見てください。
+- [jiyuujin](https://yuma-kitamura.nekohack.me/): 少し前に副業で Flutter + Provider を使ったアプリ開発で経験させてもらいつつ、一昨年・昨年は FlutterKaigi ウェブサイトのコントビュート・リードもさせていただいておりました。
 
 皆さま、コントリビュートいただきありがとうございます。
 
