@@ -120,13 +120,13 @@ class TicTacToe {
      <br/>
    </ul>
 
-4. ゲーム・リセットボタンの追加
-   ゲーム画面に、新しいゲーム（ゲームプレイの初期状態）へ **状態遷移** させる  
+4. ゲーム・リセットボタンの追加  
+   ゲーム画面に、新しいゲーム（ゲームプレイの初期状態）へ **状態遷移** させる
    リセット・ボタンを追加します。  
    <br/>
    <ul>
      ゲーム・リセットボタンの追加<br/>
-     <img src="../images/chapter3/chapter_3_3_4.png" alt="ゲーム・リセットボタンの追加" style="max-width:20%;">
+     <img src="../images/chapter3/chapter_3_3_4.png" alt="ゲーム・リセットボタンの追加" style="max-width:40%;">
      <!--
      ![ゲーム・リセットボタンの追加](../images/chapter3/chapter_3_3_4.png)
      -->
