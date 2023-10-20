@@ -1,16 +1,23 @@
-# tic_tac_toe_handson
+# FlutterKaigi2023 ハンズオン
 
-A new Flutter project.
+[FlutterKaigi2023](https://flutterkaigi.jp/2023/) 本編とは別日の 10/26(木)19:00~ にハンズオンを開催します。
 
-## Getting Started
+connpass のイベントページはこちらになります。
 
-This project is a starting point for a Flutter application.
+https://flutterkaigi.connpass.com/event/293847/
 
-A few resources to get you started if this is your first Flutter project:
+## ハンズオン概要
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+今回はのテーマは **Riverpod** です。
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Flutter 開発における状態管理の手法として注目を集めている Riverpod の基本的な使い方を、三目並べアプリの作成を通して一緒に学んでいきましょう。後半のチャレンジ企画では、 Firebase のFirestore を使ったリアルタイム対戦機能の実装を予定しています。
+
+完成予定の画面は以下の通りです。
+
+![完成予定図](./docs/public/top_application_sample.gif)
+
+## 教材
+
+ハンズオンは以下の教材を使って進めていきます。
+
+https://tic-tac-toe-handson.pages.dev/
