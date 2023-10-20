@@ -106,13 +106,13 @@ class TicTacToe {
      <br/>
    </ul>
 
-3. メッセージ表示欄の追加
-   ゲーム画面に「ゲーム進行状態」から **今回の指手や、ゲーム勝敗終了** を表示する、  
+3. メッセージ表示欄の追加  
+   ゲーム画面に「ゲーム進行状態」から **今回の指手や、ゲーム勝敗終了** を表示する、
    メッセージ欄を新規追加します。  
    <br/>
    <ul>
      メッセージ表示欄の追加<br/>
-     <img src="../images/chapter3/chapter_3_3_3.png" alt="メッセージ表示欄の追加" style="max-width:20%;">
+     <img src="../images/chapter3/chapter_3_3_3.png" alt="メッセージ表示欄の追加" style="max-width:40%;">
      <!--
      ![メッセージ表示欄の追加](../images/chapter3/chapter_3_3_3.png)
      -->
