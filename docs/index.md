@@ -18,9 +18,9 @@ Flutter 開発における状態管理の手法として注目を集めている
 
 ### 進め方
 
-ハンズオンは Zoom を使ってオンラインで行います。当日までに [connpassのイベントページ](https://flutterkaigi.connpass.com/event/293847/)に Zoom のリンクを記載しますので、そちらよりご入場ください。
+ハンズオンは YouTube によるリアルタイム配信が行われます。当日までに [connpass](https://flutterkaigi.connpass.com/event/293847/)に YouTube のリンクを掲載しますので、そちらよりご参加ください。
 
-また、ハンズオンの内容はリアルタイム配信され、後日アーカイヴ化される予定です。忘れずに [FlutterKaigi 公式 YouTube チャンネル](https://www.youtube.com/channel/UC1JP6dPBmmccZto4LNz9KMw) の登録をぽちっとしていただければ幸いです！
+また、後日アーカイヴ化される予定 (リアルタイム配信同様の URL として公開される予定) です。忘れずに [FlutterKaigi 公式 YouTube チャンネル](https://www.youtube.com/channel/UC1JP6dPBmmccZto4LNz9KMw) の登録をぽちっとしていただければ幸いです！
 
 ## ハンズオンの内容 (予定)
 
