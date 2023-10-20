@@ -9,11 +9,11 @@
     "preview": "vitepress preview docs"
   },
   "dependencies": {
-    "vitepress": "^1.0.0-rc.13"
+    "vitepress": "^1.0.0-rc.22"
   },
   "devDependencies": {
     "jsdom": "^22.1.0",
-    "@nekohack/markdown-it-link-preview": "^1.0.6",
+    "@nekohack/markdown-it-link-preview": "^1.0.7",
     "typescript": "^5.2.2",
     "xmlhttprequest": "^1.8.0"
   }
