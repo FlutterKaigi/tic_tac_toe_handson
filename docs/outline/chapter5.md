@@ -71,12 +71,12 @@ void main() async {
 ```
 
 ### 1. Androidでのビルド準備を進める
-`Android/build.gradle` に以下を追記します。
+`android/build.gradle` に以下を追記します。
 ```txt
 classpath 'com.google.gms:google-services:4.3.10'
 ```
 
-`Android/app/build.gradle` に以下を追記します。
+`android/app/build.gradle` に以下を追記します。
 ```txt
 apply plugin: 'com.google.gms.google-services'
 ```
