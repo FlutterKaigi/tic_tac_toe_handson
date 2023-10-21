@@ -72,7 +72,7 @@ class TicTacToe {
 }
 ```
 
-### 3.1.3: UI 作成手順 （ゲーム画面の作成ステップ）
+### 3.2: UI 作成手順概要 （ゲーム画面の作成ステップ）
 
 前章までの作業は、flutter プロジェクトの新規作成とゲームロジックのモデルの新規追加までとなっています。  
 このためアプリの UIは、カウンターアプリのままですから、以下の手順で、三目並べを遊ぶための画面を作り上げていきます。
@@ -85,16 +85,16 @@ class TicTacToe {
    <br/>
    <ul>
      <a href="https://github.com/FlutterKaigi/tic_tac_toe_handson/blob/release/chapter2/lib/main.dart">修正前 main パッケージ</a><br/>
-     <img src="../images/chapter3/chapter_3_3_0.png" alt="修正前 main パッケージ" style="max-width:40%;">
+     <img src="../images/chapter3/chapter_3_2_0.png" alt="修正前 main パッケージ" style="max-width:40%;">
      <!--
-     ![修正前 main パッケージ](../images/chapter3/chapter_3_3_0.png)
+     ![修正前 main パッケージ](../images/chapter3/chapter_3_2_0.png)
      -->
      <br/>
      <br/>
    </ul>
    <ul>
      main パッケージの修正<br/>
-     <img src="../images/chapter3/chapter_3_3_1.png" alt="main パッケージの修正" style="max-width:40%;">
+     <img src="../images/chapter3/chapter_3_2_1.png" alt="main パッケージの修正" style="max-width:40%;">
      <!--
      ![main パッケージの修正](../images/chapter3/chapter_3_3_1.png)
      -->
@@ -109,9 +109,9 @@ class TicTacToe {
    <br/>
    <ul>
      三目並べ盤面の追加<br/>
-     <img src="../images/chapter3/chapter_3_3_2.png" alt="三目並べ盤面の追加" style="max-width:40%;">
+     <img src="../images/chapter3/chapter_3_2_2.png" alt="三目並べ盤面の追加" style="max-width:40%;">
      <!--
-     ![三目並べ盤面の追加](../images/chapter3/chapter_3_3_2.png)
+     ![三目並べ盤面の追加](../images/chapter3/chapter_3_2_2.png)
      -->
      <br/>
      <br/>
@@ -123,9 +123,9 @@ class TicTacToe {
    <br/>
    <ul>
      メッセージ表示欄の追加<br/>
-     <img src="../images/chapter3/chapter_3_3_3.png" alt="メッセージ表示欄の追加" style="max-width:40%;">
+     <img src="../images/chapter3/chapter_3_2_3.png" alt="メッセージ表示欄の追加" style="max-width:40%;">
      <!--
-     ![メッセージ表示欄の追加](../images/chapter3/chapter_3_3_3.png)
+     ![メッセージ表示欄の追加](../images/chapter3/chapter_3_2_3.png)
      -->
      <br/>
      <br/>
@@ -137,9 +137,9 @@ class TicTacToe {
    <br/>
    <ul>
      ゲーム・リセットボタンの追加<br/>
-     <img src="../images/chapter3/chapter_3_3_4.png" alt="ゲーム・リセットボタンの追加" style="max-width:40%;">
+     <img src="../images/chapter3/chapter_3_2_4.png" alt="ゲーム・リセットボタンの追加" style="max-width:40%;">
      <!--
-     ![ゲーム・リセットボタンの追加](../images/chapter3/chapter_3_3_4.png)
+     ![ゲーム・リセットボタンの追加](../images/chapter3/chapter_3_2_4.png)
      -->
      <br/>
      <br/>
