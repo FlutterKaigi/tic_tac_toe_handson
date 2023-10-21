@@ -384,10 +384,236 @@ class _BoardState extends State<Board> {
 <br/>
 
 
-#### 2. 三目並べ盤面の追加
-ゲーム画面（`Board`）に「ゲーム進行状態」から、**今までの指手（○×マーク）** の配置や、
-**今回のプレーヤーの指手（○×マーク）** を配置して、次の**ゲーム進行状態**に **状態遷移** できるようにします。  
-このために縦横 3x3 に区切られたマス目（セル）を新規追加します。  
+#### 2. ３×３のマス目の追加（セル追加）
+三目並べ盤面には、３×３のマス目があります。  
+ここでは、**[GridView](https://api.flutter.dev/flutter/widgets/GridView-class.html)** という
+**グリッド ⇒ ウィジェットの2D配列 ⇒ 縦横格子レイアウト** を行うウィジェットを使ってマス目を表現します。  
+_具体的なコードは、（修正後）ゲーム画面のコードを参照ください。_
+
+- _[GridView](https://api.flutter.dev/flutter/widgets/GridView-class.html)は、いくつかの状況に対応できるよう複数のコンストラクタがあります。_  
+_ハンズオンでは、[builderコンストラクタ](https://api.flutter.dev/flutter/widgets/GridView/GridView.builder.html)を使って、_
+_横方向 3個のアイテムを 9個分描画させることで３×３のマス目を表現しています。_
+
+<br/>
+
+- **（修正後）ゲーム画面(Board) ウィジェットのコード内容**
+```dart
+      〜 省略 〜
+      child: Column(
+        children: [
+          //【新規追加】（ここから）
+          // 三目並べ盤面
+          GridView.builder(
+            shrinkWrap: true,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3, //横方向のマス個数（３個）
+            ),
+            itemCount: 9, //縦横のマス個数（３×３）
+            itemBuilder: (context, index) {
+              return const SizedBox.expand(); //マス目に空欄を確保するだけのダミー
+            },
+          ),
+          //
+          //【新規追加（ここまで）
+        ],
+      ),
+      〜 省略 〜
+```
+<br/>
+
+
+#### 3. ３×３のマス目の追加（縦横の罫線表示）
+三目並べ盤面の３×３のマス目が確保できたので、各マスに縦横の罫線を引きましょう。  
+ここでは **[Container ウィジェット](https://api.flutter.dev/flutter/widgets/Container-class.html)** の 
+**[decoration プロパティ](https://api.flutter.dev/flutter/widgets/Container/decoration.html)** に
+**[BoxDecoration](https://api.flutter.dev/flutter/painting/BoxDecoration-class.html)** を指定して、**枠線** を描画させます。
+
+各マス目に空欄を確保するだけのダミー ```return const SizedBox.expand();``` を `Container`に差し替えます。  
+_正確にいうと罫線でなく枠線を描画しています。このため内側罫線よりも外枠が細くなっていることに注意ください。_  
+_具体的なコードは、（修正後）ゲーム画面のコードを参照ください。_
+
+- _[Container](https://api.flutter.dev/flutter/widgets/Container-class.html)は、自分の描画領域や子ウィジェットに制約を与えるウィジェットです。_  
+  _このため自分の描画領域にサイズや背景色や枠線を、子ウィジェットに配置位置(右寄、中央寄、etc)や変形などの制約を与えることができます。_  
+
+<br/>
+
+- **（修正後）ゲーム画面(Board) ウィジェットのコード内容**  
+```dart
+            〜 省略 〜
+            itemBuilder: (context, index) {
+              //【差替】（ここから）
+              return Container(
+                //マス目の縦横罫線をGrayで描画
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey),
+                ),
+              );
+              //【差替】（ここまで）
+            },
+            〜 省略 〜
+```
+<br/>
+
+
+#### 4. ３×３のマス目の追加（○×マーク表示）
+三目並べ盤面の３×３のマス目には、先攻と後攻指手の○×マークが描画されます。  
+先攻と後攻指手の○×マークは、ある時点の **ゲーム進行状態のモデル([TicTacTow クラス](https://github.com/FlutterKaigi/tic_tac_toe_handson/blob/release/chapter3/lib/model/tic_tac_toe.dart)) オブジェクト** の
+2次元配列(`List<List<String>> board`)に記録されているので、以下のような行列判定と○×マークを取得するコードを追加します。
+
+```dart
+itemBuilder: (context, index) {
+  // マス目ごとの行と列を判定し、カレントマス目の ○×（あるいは空文字列）マークを取得する。
+  int row = index ~/ 3;
+  int col = index % 3;
+  String mark = ticTacToe.board[row][col]; //○× または空文字列を返す。
+}
+```
+
+またマス目ごとに ○×マークを描画するため、`Containerの childプロパティ`に `Text(mark)`を追加します。  
+_具体的なコードは、（修正後）ゲーム画面のコードを参照ください。_
+
+_**先攻と後攻の指手が交代するごとに、ゲーム盤面全体が更新される** ことに留意ください。_
+
+<br/>
+
+- **（修正後）ゲーム画面(Board) ウィジェットのコード内容**
+```dart
+            〜 省略 〜
+            itemBuilder: (context, index) {
+              //【新規追加】（ここから）
+              final row = index ~/ 3;
+              final col = index % 3;
+              final mark = ticTacToe.board[row][col]; //ゲーム進捗状態から、マス目に対応する○×マークを取得
+              //【新規追加（ここまで）
+
+               return Container(
+                //マス目の縦横罫線をGrayで描画
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey),
+                ),
+                //【新規追加】（ここから）
+                child: Center(
+                  //マス目の ○×マーク（もしくは空欄）を描画
+                  child: Text(
+                    mark,
+                    style: const TextStyle(fontSize: 32),
+                  ),
+                ),
+                //【新規追加（ここまで）
+              );
+              〜 省略 〜
+```
+<br/>
+
+
+#### 5. ３×３のマス目の追加（マス目のタップイベント追加）
+三目並べ盤面の３×３のマス目は、タップにより**新しい指し手**（○×マーク）が配置されて、次の対局に進みます。  
+これはタップされたマス目により、**カレント指し手**が有効であるか ⇒ ○×マーク配置可能か否かを判定し、
+有効であれば**カレント指し手が記録された「新しいゲーム進行状態」に状態遷移する**ことが求められます。
+
+ここでは、`GestureDetectorで`、マス目を描画する `Container`をラップし `onTap ハンドラ`を使ってタップのハンドリングを行っています。  
+またハンドラでは、タップされると **カレント指し手が有効か否か**を判定し、有効であれば **カレント指し手が記録された「新しいゲーム進行状態」に状態遷移する**ため、
+`setState()`で **ゲーム進行状態のモデル([TicTacTow クラス](https://github.com/FlutterKaigi/tic_tac_toe_handson/blob/release/chapter3/lib/model/tic_tac_toe.dart))の placeMark(row, col)** を実行させます。  
+_具体的なコードは、（修正後）ゲーム画面のコードを参照ください。_
+
+_【備考】カレント指し手は、新しいゲーム進行状態への状態遷移から、１つ前で追加した（○×マーク表示）によりマス目に描画されます。_
+
+<br/>
+
+- **（修正後）ゲーム画面(Board) ウィジェットのコード内容**
+```dart
+            〜 省略 〜
+            itemBuilder: (context, index) {
+              final row = index ~/ 3;
+              final col = index % 3;
+              final mark = ticTacToe.board[row][col];
+
+              //【修正】新規追加した GestureDetectorの childで、Containerをラップ（ここから）
+              return GestureDetector(                            //【新規追加】
+                onTap: () {                                      //【新規追加】
+                  setState(() {                                  //【新規追加】
+                    final winner = ticTacToe.getWinner();        //【新規追加】
+                    if (mark.isEmpty && winner.isEmpty) {        //【新規追加】
+                      ticTacToe = ticTacToe.placeMark(row, col); //【新規追加】
+                    }                                            //【新規追加】
+                  });                                            //【新規追加】
+                },                                               //【新規追加】
+                child: Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.grey),
+                  ),
+                  child: Center(
+                    child: Text(
+                      mark,
+                      style: const TextStyle(fontSize: 32),
+                    ),
+                  ),
+                ),
+              );                                                　//【新規追加】
+              //【修正】新規追加した GestureDetectorの childで、Containerをラップ（ここまで）
+            },
+            〜 省略 〜
+```
+<br/>
+
+
+#### 6. ３×３のマス目の追加（修正全容）
+- **（修正全容）ゲーム画面(Board) ウィジェットのコード内容**
+```dart
+class _BoardState extends State<Board> {
+  TicTacToe ticTacToe = TicTacToe.start(playerX: 'Dash', playerO: 'Sparky');
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        children: [
+          //【新規追加】（ここから）
+          // 三目並べ盤面
+          GridView.builder(
+            shrinkWrap: true,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3,
+            ),
+            itemCount: 9,
+            itemBuilder: (context, index) {
+              final row = index ~/ 3;
+              final col = index % 3;
+              final mark = ticTacToe.board[row][col];
+
+              return GestureDetector(
+                onTap: () {
+                  setState(() {
+                    final winner = ticTacToe.getWinner();
+                    if (mark.isEmpty && winner.isEmpty) {
+                      ticTacToe = ticTacToe.placeMark(row, col);
+                    }
+                  });
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.grey),
+                  ),
+                  child: Center(
+                    child: Text(
+                      mark,
+                      style: const TextStyle(fontSize: 32),
+                    ),
+                  ),
+                ),
+              );
+            },
+          ),
+          //
+          //【新規追加（ここまで）
+        ],
+      ),
+    );
+  }
+}
+```
+<br/>
 
 
 #### 3.3.3: メッセージ表示欄の追加
