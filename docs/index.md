@@ -1,6 +1,6 @@
 # FlutterKaigi 2023 ハンズオン
 
-[FlutterKaigi 2023](https://flutterkaigi.jp/2023/) 本編とは別日の 10/26(木) 19:00 からハンズオンを開催します。
+[FlutterKaigi 2023](https://flutterkaigi.jp/2023/) 本編とは別日の 10/26(木) 19:00 から [ハンズオン](https://flutterkaigi.connpass.com/event/293847/) を開催します。
 
 ## ハンズオン概要
 
