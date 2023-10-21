@@ -43,9 +43,7 @@ classpath 'com.google.gms:google-services:4.3.10'
 iOSフォルダをXcodeで開いたのちに、Runnerに`google-services.json` を追加します。  
 このとき、「Copy items if needed」にチェックを入れて追加してください。
 
-```
 ![Alt text](../public/chapter5/add_plist.png)
-```
 
 
 これで基本的な準備は完了！  
