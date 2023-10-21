@@ -527,7 +527,7 @@ _**先攻と後攻の指手が交代するごとに、ゲーム盤面全体が�
 **[State](https://api.flutter.dev/flutter/widgets/State-class.html)** の
 **[setState()](https://api.flutter.dev/flutter/widgets/State/setState.html)** で実行されるようにすれば良いことになります。
 
-```agsl
+```dart
 setState(() {
   //カレント指し手が有効か否かをチェックするため、カレント指し手のマス目(mark)が現在空欄であり、勝敗もついていないことを確認する。
   final winner = ticTacToe.getWinner();
