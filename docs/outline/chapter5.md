@@ -44,7 +44,7 @@ iOSフォルダをXcodeで開いたのちに、Runnerに`google-services.json` �
 このとき、「Copy items if needed」にチェックを入れて追加してください。
 
 ```
-![Alt text](image-1.png)
+![Alt text](../public/chapter5/add_plist.png)
 ```
 
 
