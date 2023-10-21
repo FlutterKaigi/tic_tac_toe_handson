@@ -507,16 +507,40 @@ _**先攻と後攻の指手が交代するごとに、ゲーム盤面全体が�
 
 
 #### 5. ３×３のマス目の追加（マス目のタップイベント追加）
-三目並べ盤面の３×３のマス目は、タップにより**新しい指し手**（○×マーク）が配置されて、次の対局に進みます。  
-これはタップされたマス目により、**カレント指し手**が有効であるか ⇒ ○×マーク配置可能か否かを判定し、
-有効であれば**カレント指し手が記録された「新しいゲーム進行状態」に状態遷移する**ことが求められます。
+三目並べ盤面の３×３のマス目は、タップにより**新しい指し手**（○×マーク）が配置されて、次の対局に進みます。
 
-ここでは、`GestureDetectorで`、マス目を描画する `Container`をラップし `onTap ハンドラ`を使ってタップのハンドリングを行っています。  
-またハンドラでは、タップされると **カレント指し手が有効か否か**を判定し、有効であれば **カレント指し手が記録された「新しいゲーム進行状態」に状態遷移する**ため、
-`setState()`で **ゲーム進行状態のモデル([TicTacTow クラス](https://github.com/FlutterKaigi/tic_tac_toe_handson/blob/release/chapter3/lib/model/tic_tac_toe.dart))の placeMark(row, col)** を実行させます。  
+これはタップされたマス目により、**カレント指し手**が有効であるか ⇒ ○×マーク配置可能か否かを判定し、
+有効であれば**カレント指し手が記録された「新しいゲーム進行状態」に状態遷移する**ことが求められることを示します。
+
+タップ・イベントをハンドリングするウィジェット ⇒ タップに対応する任意処理を指定できるウィジェットには、
+**[GestureDetector](https://api.flutter.dev/flutter/widgets/GestureDetector-class.html)** があります。  
+[GestureDetector](https://api.flutter.dev/flutter/widgets/GestureDetector-class.html)は、
+[child プロパティ](https://api.flutter.dev/flutter/widgets/GestureDetector/child.html)にタップを監視するウィジェットを指定でき、
+[onTap プロパティ](https://api.flutter.dev/flutter/widgets/GestureDetector/onTap.html)にタップ時の対応を指定できます。  
+
+ハンドラでは、タップされると **カレント指し手が有効か否か**を判定し、有効であれば **カレント指し手がマス目に配置された三目並べの盤面を作成** させるため、
+**ゲーム進行状態のモデル([TicTacTow クラス](https://github.com/FlutterKaigi/tic_tac_toe_handson/blob/release/chapter3/lib/model/tic_tac_toe.dart))の placeMark(row, col)** を実行することになります。  
+
+よってこれらの処理が、**[StatefulWidget](https://api.flutter.dev/flutter/widgets/StatefulWidget-class.html)** の状態を更新する
+**[State](https://api.flutter.dev/flutter/widgets/State-class.html)** の
+**[setState()](https://api.flutter.dev/flutter/widgets/State/setState.html)** で実行されるようにすれば良いことになります。
+
+```agsl
+setState(() {
+  //カレント指し手が有効か否かをチェックするため、カレント指し手のマス目(mark)が現在空欄であり、勝敗もついていないことを確認する。
+  final winner = ticTacToe.getWinner();
+  if (mark.isEmpty && winner.isEmpty) {
+    //カレント指し手が有効であれば、カレント指し手がゲーム盤面に反映された「新しいゲーム進行状態」を生成する。
+    ticTacToe = ticTacToe.placeMark(row, col);
+  }
+});
+```
+
+ここでは、`GestureDetector`でマス目を描画する `Container`をラップし `onTap ハンドラ`を使ってタップのハンドリングを行なわせましょう。  
 _具体的なコードは、（修正後）ゲーム画面のコードを参照ください。_
 
-_【備考】カレント指し手は、新しいゲーム進行状態への状態遷移から、１つ前で追加した（○×マーク表示）によりマス目に描画されます。_
+- 【備考】新しいゲーム進行状態への状態遷移により、カレント指し手がマス目に描画されます。  
+  　　　　この描画は１つ前で追加した、**３×３のマス目の追加（○×マーク表示）** により行われます。
 
 <br/>
 
@@ -616,10 +640,10 @@ class _BoardState extends State<Board> {
 <br/>
 
 <ul>
-  三目並べ盤面の追加<br/>
-  <img src="../images/chapter3/chapter_3_3_2-6.png" alt="三目並べ盤面の追加" style="max-width:50%;">
+  三目並べ盤面の追加（修正全容）<br/>
+  <img src="../images/chapter3/chapter_3_3_2-6.png" alt="三目並べ盤面の追加（修正全容）" style="max-width:50%;">
   <!--
-  ![三目並べ盤面の追加](../images/chapter3/chapter_3_3_2-6.png)
+  ![三目並べ盤面の追加（修正全容）](../images/chapter3/chapter_3_3_2-6.png)
   -->
   <br/>
   <br/>
