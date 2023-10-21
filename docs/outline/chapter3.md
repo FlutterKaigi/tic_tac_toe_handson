@@ -152,10 +152,183 @@ class TicTacToe {
 三目並べを遊ぶための画面 UIの作成ステップを紹介しましたので、具体的な作業に入りましょう。
 
 #### 3.3.1: main パッケージの修正
-前章でのアプリの UIは、カウンターアプリのままです。  
-このためプロジェクトにゲーム画面（`Board` ⇒ はじめは空コンテンツ）を新規追加します。  
-次に元々のカウンターアプリから不要コードの削除とアプリタイトルの修正を行い、  
-ホーム画面を `MyHomePage` からゲーム画面（はじめは空コンテンツ）に差し替えます。  
+
+##### 1. ゲーム画面ウィジェット（はじめは空コンテンツの）を新規作成
+プロジェクトにゲーム画面（`Board` ⇒ はじめは空コンテンツ）を新規追加します。  
+IDEやエディタで `libディレクトリ`に `view ディレクトリ`を新規追加して、空コンテンツのゲーム画面(`board.dart`)ファイルを追加してください。
+
+<br/>
+
+- **空コンテンツのゲーム画面(Board) ウィジェットのコードファイル**  
+  コードファイル名 board.dart、パッケージ配置先 ⇒ lib/view/board.dart
+``` dart
+import 'package:flutter/material.dart';
+
+class Board extends StatefulWidget {
+  const Board({Key? key}) : super(key: key);
+
+  @override
+  State<StatefulWidget> createState() {
+    return _BoardState();
+  }
+}
+
+class _BoardState extends State<Board> {
+  @override
+  Widget build(BuildContext context) {
+    // 画面いっぱいに描画領域だけを確保しています。
+    return const SizedBox.expand();
+  }
+}
+```
+<br/>
+
+
+##### 2. 不要コードの削除（コメント削除）  
+カウンターアプリのコードには、たくさんのコメントがあります。  
+コードの見通しを良くするため[`MaterialApp`](https://api.flutter.dev/flutter/material/MaterialApp-class.html)の中にある 
+[`ThemeData`](https://api.flutter.dev/flutter/material/ThemeData-class.html)のコメントを削除しましょう。  
+またダークテーマ対応として、MaterialAppのプロパティ [darkTheme](https://api.flutter.dev/flutter/material/MaterialApp/darkTheme.html) を設定するコード ⇒ `darkTheme: ThemeData.dark(),`を追加してみてください。  
+
+- _MaterialAppは、[マテリアルライブラリ](https://api.flutter.dev/flutter/material/material-library.html)に属する **アプリケーション構成** を提供するウィジェットです。_  
+_[マテリアルライブラリ](https://api.flutter.dev/flutter/material/material-library.html)は、[マテリアルデザイン](https://m3.material.io/)が適用された各種APIを提供します。_
+
+- _ThemeDataは、アプリ内のウィジェット全般の色やテキストスタイルなどのビジュアルテーマを指定するウィジェトです。_
+
+- _darkThemeは、システム設定からダークテーマが指定されたときにアプリのビジュアルテーマを指定するプロパティです。_
+
+- _ThemeDataによりアプリ全般の設定ができることを確認してみましょう。_  
+  _時間があれば ThemeDataのプロパティ [scaffoldBackgroundColor](https://api.flutter.dev/flutter/material/ThemeData/scaffoldBackgroundColor.html)にコード ⇒ `scaffoldBackgroundColor: Colors.amber,` を追加して背景色が変化することを確認してみてください。_
+
+<br/>
+
+- **作業後の MaterialApp と ThemeData のコード内容**
+``` dart
+ 〜 省略 〜
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      darkTheme: ThemeData.dark(), //【新規追加】
+      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+    );
+  }
+ 〜 省略 〜
+```
+<br/>
+
+
+##### 3. 不要コードの削除（ホーム画面削除）
+次にホーム画面を `MyHomePage` から、アプリ画面の足場([`Scaffold`](https://api.flutter.dev/flutter/material/Scaffold-class.html))に差し替えます。  
+_差し替えが終わりましたら、不要になった `MyHomePage` と `_MyHomePageState` を削除してください。_
+
+- _Scaffoldは、アプリ画面に [アプリバー](https://api.flutter.dev/flutter/material/Scaffold/appBar.html)や [ボディ(表示コンテンツ)](https://api.flutter.dev/flutter/material/Scaffold/body.html)などの足場を提供するウィジェトです。_
+
+<br/>
+
+- **作業後の MaterialApp: homeプロパティのコード内容**
+``` dart
+ 〜 省略 〜
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      darkTheme: ThemeData.dark(),
+      home: Scaffold(), //【コード差替】
+    );
+  }
+ 〜 省略 〜
+```
+<br/>
+
+
+##### 4. アプリタイトル表示を追加
+一つ前の作業ステップで、`MyHomePage`を削除したのでアプリバーがなくなっています。  
+アプリバーを表示させるため [`Scaffold`](https://api.flutter.dev/flutter/material/Scaffold-class.html)の **アプリバー・プロパティ([appBar](https://api.flutter.dev/flutter/material/Scaffold/appBar.html))** に
+**アプリケーションバー・ウィジェット([AppBar](https://api.flutter.dev/flutter/material/AppBar-class.html))** を追加します。
+
+画面にアプリバーが追加されたのでハンズオン・アプリを示すよう、
+`AppBar`の **タイトル・プロパティ([title](https://api.flutter.dev/flutter/material/AppBar/title.html))** に **'FlutterKaigi 2023 - TicTacToe'** を設定します。  
+また `MaterialApp`の **タイトル・プロパティ([title](https://api.flutter.dev/flutter/material/MaterialApp/title.html))** にも同様に **'FlutterKaigi 2023 - TicTacToe’** を設定します。
+
+<br/>
+
+- **作業後の MaterialApp と Scaffold のコード内容**
+``` dart
+ 〜 省略 〜
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'FlutterKaigi 2023 - TicTacToe', //【タイトル差替】アプリ説明のタイトル
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      darkTheme: ThemeData.dark(),
+      home: Scaffold(
+        appBar: AppBar(                                       //【新規追加】アプリバー
+          title: const Text('FlutterKaigi 2023 - TicTacToe'), //【新規追加】アプリのタイトル
+        ),                                                    //【新規追加】
+      ),
+    );
+  }
+ 〜 省略 〜
+```
+<br/>
+
+
+##### 5. アプリコンテンツ（ゲーム画面）表示を追加
+アプリバーを追加したので、残るゲーム画面をアプリボディに追加しましょう。  
+ゲーム画面を表示させるため [`Scaffold`](https://api.flutter.dev/flutter/material/Scaffold-class.html)の 
+**ボディ・プロパティ([body](https://api.flutter.dev/flutter/material/Scaffold/body.html))** に **ゲーム画面・ウィジェット(`Board`)** を追加します。
+
+_【注意】現状のゲーム画面(`Board`)は、何も表示するものがありません。_
+
+<br/>
+
+- **作業後の main パッケージ内容**  
+``` dart
+import 'package:flutter/material.dart';
+import 'package:tic_tac_toe_handson/view/board.dart';
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'FlutterKaigi 2023 - TicTacToe',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      darkTheme: ThemeData.dark(),
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('FlutterKaigi 2023 - TicTacToe'),
+        ),
+        body: const Board(), //【新規追加】ゲーム画面ウィジェット
+      ),
+    );
+  }
+}
+```
+
+<br/>
+<ul>
+  main パッケージ修正後のアプリ画面<br/>
+  <img src="../images/chapter3/chapter_3_3_1ｰ5.png" alt="main パッケージ修正後のアプリ画面" style="max-width:40%;">
+  <!--
+  ![main パッケージ修正後のアプリ画面](../images/chapter3/chapter_3_3_1ｰ5.png)
+  -->
+  <br/>
+  <br/>
+</ul>
+<br/>
 
 
 #### 3.3.2: 三目並べ盤面の追加
