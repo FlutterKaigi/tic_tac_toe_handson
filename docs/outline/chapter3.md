@@ -255,7 +255,7 @@ _差し替えが終わりましたら、不要になった `MyHomePage` と `_My
 
 画面にアプリバーが追加されたのでハンズオン・アプリを示すよう、
 `AppBar`の **タイトル・プロパティ([title](https://api.flutter.dev/flutter/material/AppBar/title.html))** に **'FlutterKaigi 2023 - TicTacToe'** を設定します。  
-また `MaterialApp`の **タイトル・プロパティ([title](https://api.flutter.dev/flutter/material/MaterialApp/title.html))** にも同様に **'FlutterKaigi 2023 - TicTacToe’** を設定します。
+また `MaterialApp`の **タイトル・プロパティ([title](https://api.flutter.dev/flutter/material/MaterialApp/title.html))** にも同様に **'FlutterKaigi 2023 - TicTacToe’** を設定してください。
 
 <br/>
 
@@ -321,7 +321,7 @@ class MyApp extends StatelessWidget {
 <br/>
 <ul>
   main パッケージ修正後のアプリ画面<br/>
-  <img src="../images/chapter3/chapter_3_3_1ｰ5.png" alt="main パッケージ修正後のアプリ画面" style="max-width:40%;">
+  <img src="../images/chapter3/chapter_3_3_1ｰ5.png" alt="main パッケージ修正後のアプリ画面" style="max-width:50%;">
   <!--
   ![main パッケージ修正後のアプリ画面](../images/chapter3/chapter_3_3_1ｰ5.png)
   -->
