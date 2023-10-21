@@ -1,10 +1,6 @@
 # FlutterKaigi 2023 ハンズオン
 
-[FlutterKaigi 2023](https://flutterkaigi.jp/2023/) 本編とは別日の 10/26(木) 19:00 からハンズオンを開催します。
-
-connpass のイベントページはこちらになります。
-
-[@preview](https://flutterkaigi.connpass.com/event/293847/)
+[FlutterKaigi 2023](https://flutterkaigi.jp/2023/) 本編とは別日の 10/26(木) 19:00 から [ハンズオン](https://flutterkaigi.connpass.com/event/293847/) を開催します。
 
 ## ハンズオン概要
 
@@ -36,10 +32,13 @@ Flutter 開発における状態管理の手法として注目を集めている
 
 昨年 同様、今回も FlutterKaigi ハンズオンチーム一同、企画・製作しています。
 
-- [okaryo](https://twitter.com/okaryoX): 現在は主にRubyやGoを仕事で扱っていますが、今もFlutterは大好きです！
-- [ちっぴー](https://twitter.com/chippy_ao): FlutterとFirebaseをよく扱っており、Riverpodは重宝しております！ハンズオンを通して学びを一緒に深めていきましょう👾
-- [robo](https://twitter.com/cch_robo): 既存 iOS/Android ネイティブアプリの Flutter リプレースに携わっております。Flutter の威力を見てください。
-- [jiyuujin](https://yuma-kitamura.nekohack.me/): 少し前に副業で Flutter + Provider を使ったアプリ開発で経験させてもらいつつ、一昨年・昨年は FlutterKaigi ウェブサイトのコントビュート・リードもさせていただいておりました。
+<BaseProfile avatar-url="/staff/okaryo.png" name="okaryo" title="現在は主にRubyやGoを仕事で扱っていますが、今もFlutterは大好きです！" twitter-url="https://twitter.com/okaryoX" />
+
+<BaseProfile avatar-url="/staff/daichi-aoki.png" name="ちっぴー" title="FlutterとFirebaseをよく扱っており、Riverpodは重宝しております！ハンズオンを通して学びを一緒に深めていきましょう👾" twitter-url="https://twitter.com/chippy_ao" />
+
+<BaseProfile avatar-url="/staff/rie-kanetaka.png" name="robo" title="既存 iOS/Android ネイティブアプリの Flutter リプレースに携わっております。Flutter の威力を見てください。" twitter-url="https://twitter.com/cch_robo" />
+
+<BaseProfile avatar-url="/staff/yuma-kitamura.png" name="jiyuujin" title="少し前に副業で Flutter + Provider を使ったアプリ開発で経験させてもらいつつ、一昨年・昨年は FlutterKaigi ウェブサイトのコントビュート・リードもさせていただいておりました。" sns-url="https://twitter.com/jiyuujinlab" />
 
 皆さま、コントリビュートいただきありがとうございます。
 

@@ -357,6 +357,9 @@ class MyApp extends StatelessWidget {
 
 
 
+## コントリビューター
 
-## メモ
+<BaseProfile avatar-url="/staff/rie-kanetaka.png" name="robo" title="既存 iOS/Android ネイティブアプリの Flutter リプレースに携わっております。Flutter の威力を見てください。" twitter-url="https://twitter.com/cch_robo" />
+
+### メモ
 * もう少し細かく区切った方が良さそう
