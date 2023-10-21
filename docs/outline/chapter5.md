@@ -71,25 +71,28 @@ void main() async {
 ```
 
 ### 1. Androidでのビルド準備を進める
-#### Android/app フォルダ
-`build.gradle` に以下を追記します。
-```txt
-apply plugin: 'com.google.gms.google-services'
-```
-[GitHub Discussions](https://github.com/FlutterKaigi/tic_tac_toe_handson/discussions) から  `google-services.json` をを取得し、追加します。
-
-#### Android フォルダ
-`build.gradle` に以下を追記します。
+`Android/build.gradle` に以下を追記します。
 ```txt
 classpath 'com.google.gms:google-services:4.3.10'
 ```
+
+`Android/app/build.gradle` に以下を追記します。
+```txt
+apply plugin: 'com.google.gms.google-services'
+```
+
+また`defaultConfig`の中に記載がない場合、以下も追記します。
+```txt
+multiDexEnabled true
+```
+
+[GitHub Discussions](https://github.com/FlutterKaigi/tic_tac_toe_handson/discussions) から  `google-services.json` を取得し、`Android/app`に追加します。
 
 ### 2. iOSでのビルド準備を進める
 iOSフォルダをXcodeで開いたのちに、Runnerに[GitHub Discussions](https://github.com/FlutterKaigi/tic_tac_toe_handson/discussions) で取得した  `GoogleService-Info.plist` を追加します。  
 このとき、「Copy items if needed」にチェックを入れて追加してください。
 
 ![Alt text](../public/chapter5/add_plist.png)
-
 
 これで基本的な準備は完了！  
 ハンズオン用に手動でしましたが、[FlutterFire](https://firebase.flutter.dev/)を使用することでコマンドで簡単にできます。
@@ -132,7 +135,7 @@ iOSフォルダをXcodeで開いたのちに、Runnerに[GitHub Discussions](htt
 
 ## リポジトリを作成する
 まずは、新しいファイルを作りましょう。
-`lib/repository/tic_toc_toe_repository.dart` 
+`lib/repository/tic_tac_toe_repository.dart` 
 
 続いて、クラスを作成します。
 ```dart
@@ -208,7 +211,7 @@ final ticTacToeRepositoryProvider = AutoDisposeProvider<TicTacToeRepository>(
 
 ## データを取得するProviderを作成する
 新しいファイルを作りましょう。  
-`lib/provider/get_tic_toc_toe_provider.dart` 
+`lib/provider/get_tic_tac_toe_provider.dart` 
 
 以下を記載してください。
 ```dart
@@ -235,7 +238,7 @@ FirestoreはWebSocketが基盤になっているため、リアルタイムで�
 
 ## データを保存するProviderを作成する
 新しいファイルを作りましょう。  
-`lib/provider/update_tic_toc_toe_provider.dart` 
+`lib/provider/update_tic_tac_toe_provider.dart` 
 
 以下を記載してください。
 ```dart
@@ -328,4 +331,11 @@ final getTicTacToeProvider = AutoDisposeStreamProvider<TicTacToe>(
 );
 ```
 
-それでは遊んでみましょう〜！！  
+それでは遊んでみてください。
+
+iOSでビルドした際に、Podfileに以下のコマンドが記載されている場合、コメントアウトすることで実行できます。
+```txt
+#   target 'RunnerTests' do
+#     inherit! :search_paths
+#   end
+```
