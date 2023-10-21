@@ -86,7 +86,7 @@ apply plugin: 'com.google.gms.google-services'
 multiDexEnabled true
 ```
 
-[GitHub Discussions](https://github.com/FlutterKaigi/tic_tac_toe_handson/discussions) から  `google-services.json` を取得し、`Android/app`に追加します。
+[GitHub Discussions](https://github.com/FlutterKaigi/tic_tac_toe_handson/discussions) から  `google-services.json` を取得し、`android/app`に追加します。
 
 ### 2. iOSでのビルド準備を進める
 iOSフォルダをXcodeで開いたのちに、Runnerに[GitHub Discussions](https://github.com/FlutterKaigi/tic_tac_toe_handson/discussions) で取得した  `GoogleService-Info.plist` を追加します。  
