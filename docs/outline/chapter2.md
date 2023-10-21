@@ -6,4 +6,4 @@
 
 ## コントリビューター
 
-<BaseProfile avatar-url="/images/staff/yuma-kitamura.png" name="jiyuujin" title="少し前に副業で Flutter + Provider を使ったアプリ開発で経験させてもらいつつ、一昨年・昨年は FlutterKaigi ウェブサイトのコントビュート・リードもさせていただいておりました。" sns-url="https://twitter.com/jiyuujinlab" />
+<BaseProfile avatar-url="/staff/yuma-kitamura.png" name="jiyuujin" title="少し前に副業で Flutter + Provider を使ったアプリ開発で経験させてもらいつつ、一昨年・昨年は FlutterKaigi ウェブサイトのコントビュート・リードもさせていただいておりました。" sns-url="https://twitter.com/jiyuujinlab" />
