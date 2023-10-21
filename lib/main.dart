@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tic_tac_toe_handson/view/borad.dart';
+import 'package:tic_tac_toe_handson/view/board.dart';
 
 void main() {
   runApp(const MyApp());
