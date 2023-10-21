@@ -332,6 +332,59 @@ class MyApp extends StatelessWidget {
 
 
 #### 3.3.2: 三目並べ盤面の追加
+
+##### 1. 空コンテンツのゲーム画面の修正
+前章で新規作成した **空コンテンツのゲーム画面(`Board ウィジェット`)** は、画面いっぱいに空欄を表示するだけでした。  
+ゲーム画面は、三目並べ盤面だけではなくメッセージ欄もありますので、任意複数のコンテンツを追加できるように修正します。
+
+三目並べのゲーム画面は、縦方向にコンテンツが並びます。 このためコンテンツを列表示させる **[Column ウィジェット](https://api.flutter.dev/flutter/widgets/Column-class.html)** を使います。  
+そしてコンテンツが画面端に付かないようにする ⇒ 四方枠に空隙をとる ⇒ ため、`Column` を **[Padding ウィジェット](https://api.flutter.dev/flutter/widgets/Padding-class.html)** でラップします。  
+このような設計により最初のコード ```return const SizedBox.expand();``` を、**Paddingと Columnの入れ子** に差し替えます。  
+_具体的なコードは、（修正後）空コンテンツのゲーム画面のコードを参照ください。_
+
+最後にゲームの進行が **ゲーム開始から終了まで**の **状態遷移**で表現できるよう、  
+**[StatefulWidget](https://api.flutter.dev/flutter/widgets/StatefulWidget-class.html)** の **[State](https://api.flutter.dev/flutter/widgets/State-class.html)** に 
+**ゲーム進行状態のモデル([TicTacTow クラス](https://github.com/FlutterKaigi/tic_tac_toe_handson/blob/release/chapter3/lib/model/tic_tac_toe.dart))** を保持させます。
+
+- _[Column](https://api.flutter.dev/flutter/widgets/Column-class.html)は、複数の子ウィジェットを縦方向の列並びにするレイアウト・ウィジェットです。_
+- _[Row](https://api.flutter.dev/flutter/widgets/Row-class.html)は、複数の子ウィジェットを横方向の行並びにするレイアウト・ウィジェットです。_
+- _[Padding](https://api.flutter.dev/flutter/widgets/Padding-class.html)は、子ウィジェットの四方に空隙を入れるウィジェットです。_
+
+<br/>
+
+- **（修正後）空コンテンツのゲーム画面(Board) ウィジェットのコードファイル**  
+  コードファイル名 board.dart、パッケージ配置先 ⇒ lib/view/board.dart
+```dart
+import 'package:flutter/material.dart';
+
+class Board extends StatefulWidget {
+  const Board({Key? key}) : super(key: key);
+
+  @override
+  State<StatefulWidget> createState() {
+    return _BoardState();
+  }
+}
+
+class _BoardState extends State<Board> {
+  TicTacToe ticTacToe = TicTacToe.start(playerX: 'Dash', playerO: 'Sparky'); //【新規追加】ゲーム進行状態の初期値
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(                      //【差替】子ウィジェットの周りに空隙を指定します。
+      padding: const EdgeInsets.all(16), //【差替】子ウィジェットの四方周りに 16pixelの空隙を指定。
+      child: Column(                     //【差替】列方向(縦並び)のコンテンツウィジェット表示を指定します。
+        children: [                      //【差替】列方向表示コンテンツウィジェットのリスト
+        ],                               //【差替】（現時点では、ヘッダやボディなどの表示コンテンツはありません）
+      ),                                 //【差替】
+    );                                   //【差替】
+  }
+}
+```
+<br/>
+
+
+#### 2. 三目並べ盤面の追加
 ゲーム画面（`Board`）に「ゲーム進行状態」から、**今までの指手（○×マーク）** の配置や、
 **今回のプレーヤーの指手（○×マーク）** を配置して、次の**ゲーム進行状態**に **状態遷移** できるようにします。  
 このために縦横 3x3 に区切られたマス目（セル）を新規追加します。  
