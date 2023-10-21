@@ -359,7 +359,7 @@ class MyApp extends StatelessWidget {
 
 ## コントリビューター
 
-<BaseProfile avatar-url="/staff/rie-kanetaka.png" name="robo" title="既存 iOS/Android ネイティブアプリの Flutter リプレースに携わっています。\nFlutter の底力を見てください。" twitter-url="https://twitter.com/cch_robo" />
+<BaseProfile avatar-url="/staff/rie-kanetaka.png" name="robo" title="既存 iOS/Android ネイティブアプリの Flutter リプレースに携わっています。Flutter の底力を見てください。" twitter-url="https://twitter.com/cch_robo" />
 
 ### メモ
 * もう少し細かく区切った方が良さそう
