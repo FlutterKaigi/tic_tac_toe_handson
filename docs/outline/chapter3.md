@@ -175,6 +175,8 @@ class TicTacToe {
 
 
 #### 3.3.5: 三目並べのゲーム画面完成（ゲーム盤UI 作成作業完了）
+[**完成した main パッケージのコード**](https://github.com/FlutterKaigi/tic_tac_toe_handson/blob/release/chapter3/lib/main.dart)
+
 [**完成したゲーム画面(Board)のコード**](https://github.com/FlutterKaigi/tic_tac_toe_handson/blob/release/chapter3/lib/view/borad.dart)
 
 
