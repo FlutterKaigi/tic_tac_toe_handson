@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { withBase } from 'vitepress'
+
 const props = defineProps({
   avatarUrl: {
     type: String,
@@ -21,7 +23,7 @@ const props = defineProps({
 
 <template>
   <div class="root">
-    <img :alt="name" :src="avatarUrl" width="80" height="80" decoding="async" />
+    <img :alt="name" :src="withBase(avatarUrl)" width="80" height="80" decoding="async" />
     <div class="content">
       <h3>{{ name }}</h3>
       <p>{{ title }}</p>
