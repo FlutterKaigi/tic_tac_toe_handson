@@ -45,7 +45,7 @@ _「**ゲームプレイの初期状態**」や、指し手により盤面更新
    プレーヤーを表す「**先手** ×マーク」と「**後手** ○マーク」のプレーヤー名を保持するモデルです。  
    <br/>
 
-**【参考】TicTacToe クラスのプロパティおよびメソッドの概要一覧**
+**【参考】TicTacToe クラスのプロパティおよびメソッドの概要一覧**  
 ```dart
 /// TicTacToe クラスのプロパティおよびメソッドの概要一覧
 class TicTacToe {
@@ -160,7 +160,7 @@ IDEやエディタで `libディレクトリ`に `view ディレクトリ`を新
 <br/>
 
 - **空コンテンツのゲーム画面(Board) ウィジェットのコードファイル**  
-  コードファイル名 board.dart、パッケージ配置先 ⇒ lib/view/board.dart
+  コードファイル名 board.dart、パッケージ配置先 ⇒ lib/view/board.dart  
 ``` dart
 import 'package:flutter/material.dart';
 
@@ -202,7 +202,7 @@ _[マテリアルライブラリ](https://api.flutter.dev/flutter/material/mater
 
 <br/>
 
-- **作業後の MaterialApp と ThemeData のコード内容**
+- **作業後の MaterialApp と ThemeData のコード内容**  
 ``` dart
  〜 省略 〜
   @override
@@ -229,7 +229,7 @@ _差し替えが終わりましたら、不要になった `MyHomePage` と `_My
 
 <br/>
 
-- **作業後の MaterialApp: homeプロパティのコード内容**
+- **作業後の MaterialApp: homeプロパティのコード内容**  
 ``` dart
  〜 省略 〜
   @override
@@ -259,7 +259,7 @@ _差し替えが終わりましたら、不要になった `MyHomePage` と `_My
 
 <br/>
 
-- **作業後の MaterialApp と Scaffold のコード内容**
+- **作業後の MaterialApp と Scaffold のコード内容**  
 ``` dart
  〜 省略 〜
   @override
@@ -353,7 +353,7 @@ _具体的なコードは、（修正後）空コンテンツのゲーム画面�
 <br/>
 
 - **（修正後）空コンテンツのゲーム画面(Board) ウィジェットのコードファイル**  
-  コードファイル名 board.dart、パッケージ配置先 ⇒ lib/view/board.dart
+  コードファイル名 board.dart、パッケージ配置先 ⇒ lib/view/board.dart  
 ```dart
 import 'package:flutter/material.dart';
 
@@ -384,7 +384,7 @@ class _BoardState extends State<Board> {
 <br/>
 
 
-#### 2. ３×３のマス目の追加（セル追加）
+##### 2. ３×３のマス目の追加（セル追加）
 三目並べ盤面には、３×３のマス目があります。  
 ここでは、**[GridView](https://api.flutter.dev/flutter/widgets/GridView-class.html)** という
 **グリッド ⇒ ウィジェットの2D配列 ⇒ 縦横格子レイアウト** を行うウィジェットを使ってマス目を表現します。  
@@ -396,7 +396,7 @@ _横方向 3個のアイテムを 9個分描画させることで３×３のマ�
 
 <br/>
 
-- **（修正後）ゲーム画面(Board) ウィジェットのコード内容**
+- **（修正後）ゲーム画面(Board) ウィジェットのコード内容**  
 ```dart
       〜 省略 〜
       child: Column(
@@ -422,7 +422,7 @@ _横方向 3個のアイテムを 9個分描画させることで３×３のマ�
 <br/>
 
 
-#### 3. ３×３のマス目の追加（縦横の罫線表示）
+##### 3. ３×３のマス目の追加（縦横の罫線表示）
 三目並べ盤面の３×３のマス目が確保できたので、各マスに縦横の罫線を引きましょう。  
 ここでは **[Container ウィジェット](https://api.flutter.dev/flutter/widgets/Container-class.html)** の 
 **[decoration プロパティ](https://api.flutter.dev/flutter/widgets/Container/decoration.html)** に
@@ -457,7 +457,7 @@ _具体的なコードは、（修正後）ゲーム画面のコードを参照�
 <br/>
 
 
-#### 4. ３×３のマス目の追加（○×マーク表示）
+##### 4. ３×３のマス目の追加（○×マーク表示）
 三目並べ盤面の３×３のマス目には、先攻と後攻指手の○×マークが描画されます。  
 先攻と後攻指手の○×マークは、ある時点の **ゲーム進行状態のモデル([TicTacTow クラス](https://github.com/FlutterKaigi/tic_tac_toe_handson/blob/release/chapter3/lib/model/tic_tac_toe.dart)) オブジェクト** の
 2次元配列(`List<List<String>> board`)に記録されているので、以下のような行列判定と○×マークを取得するコードを追加します。
@@ -478,7 +478,7 @@ _**先攻と後攻の指手が交代するごとに、ゲーム盤面全体が�
 
 <br/>
 
-- **（修正後）ゲーム画面(Board) ウィジェットのコード内容**
+- **（修正後）ゲーム画面(Board) ウィジェットのコード内容**  
 ```dart
             〜 省略 〜
             itemBuilder: (context, index) {
@@ -508,7 +508,7 @@ _**先攻と後攻の指手が交代するごとに、ゲーム盤面全体が�
 <br/>
 
 
-#### 5. ３×３のマス目の追加（マス目のタップイベント追加）
+##### 5. ３×３のマス目の追加（マス目のタップイベント追加）
 三目並べ盤面の３×３のマス目は、タップにより**新しい指し手**（○×マーク）が配置されて、次の対局に進みます。
 
 これはタップされたマス目により、**カレント指し手**が有効であるか ⇒ ○×マーク配置可能か否かを判定し、
@@ -546,7 +546,7 @@ _具体的なコードは、（修正後）ゲーム画面のコードを参照�
 
 <br/>
 
-- **（修正後）ゲーム画面(Board) ウィジェットのコード内容**
+- **（修正後）ゲーム画面(Board) ウィジェットのコード内容**  
 ```dart
             〜 省略 〜
             itemBuilder: (context, index) {
@@ -583,8 +583,8 @@ _具体的なコードは、（修正後）ゲーム画面のコードを参照�
 <br/>
 
 
-#### 6. 三目並べ盤面の追加（修正全容）
-- **（修正全容）ゲーム画面(Board) ウィジェットのコード内容**
+##### 6. 三目並べ盤面の追加（修正全容）
+- **（修正全容）ゲーム画面(Board) ウィジェットのコード内容**  
 ```dart
 class _BoardState extends State<Board> {
   TicTacToe ticTacToe = TicTacToe.start(playerX: 'Dash', playerO: 'Sparky');
@@ -687,7 +687,7 @@ String _statusMessage(TicTacToe ticTacToe) {
 _具体的なコードは、（修正後）ゲーム画面のコードを参照ください。_
 <br/>
 
-- **（修正後）ゲーム画面(Board) ウィジェットのコード内容**
+- **（修正後）ゲーム画面(Board) ウィジェットのコード内容**  
 ```dart
 class _BoardState extends State<Board> {
   TicTacToe ticTacToe = TicTacToe.start(playerX: 'Dash', playerO: 'Sparky');
@@ -732,7 +732,7 @@ _具体的なコードは、（修正後）ゲーム画面のコードを参照�
 
 <br/>
 
-- **（修正全容）ゲーム画面(Board) ウィジェットのコード内容**
+- **（修正後）ゲーム画面(Board) ウィジェットのコード内容**  
 ```dart
         〜 省略 〜
         children: [
@@ -752,8 +752,8 @@ _具体的なコードは、（修正後）ゲーム画面のコードを参照�
 <br/>
 
 
-#### 3. メッセージ表示欄の追加（修正全容）
-- **（修正全容）ゲーム画面(Board) ウィジェットのコード内容**
+##### 3. メッセージ表示欄の追加（修正全容）
+- **（修正全容）ゲーム画面(Board) ウィジェットのコード内容**  
 ```dart
 class _BoardState extends State<Board> {
   TicTacToe ticTacToe = TicTacToe.start(playerX: 'Dash', playerO: 'Sparky');
@@ -773,7 +773,7 @@ class _BoardState extends State<Board> {
               style: Theme.of(context).textTheme.headlineSmall,
             ),
           ),
-          //【新規追加（ここまで）
+          //【新規追加】（ここまで）
           //
           // 三目並べ盤面
           GridView.builder(
@@ -848,14 +848,20 @@ class _BoardState extends State<Board> {
 
 
 #### 3.3.4: ゲーム・リセットボタンの追加
-ゲーム画面に、新しいゲーム（ゲームプレイの初期状態）へ **状態遷移** させる  
-リセット・ボタンを追加します。  
+新しいゲーム（ゲームプレイの初期状態）へ **状態遷移** させるリセット・ボタンを追加します。  
+
+##### 2. リセットボタンの追加
+
+- **（修正後）ゲーム画面(Board) ウィジェットのコード内容**  
+
+##### 3. ゲーム・リセットボタンの追加（修正全容）
+- **（修正全容）ゲーム画面(Board) ウィジェットのコード内容**  
 
 
 #### 3.3.5: 三目並べのゲーム画面完成（ゲーム盤UI 作成作業完了）
-[**完成した main パッケージのコード**](https://github.com/FlutterKaigi/tic_tac_toe_handson/blob/release/chapter3/lib/main.dart)
+- [**完成した main パッケージのコード**](https://github.com/FlutterKaigi/tic_tac_toe_handson/blob/release/chapter3/lib/main.dart)
 
-[**完成したゲーム画面(Board)のコード**](https://github.com/FlutterKaigi/tic_tac_toe_handson/blob/release/chapter3/lib/view/borad.dart)
+- [**完成したゲーム画面(Board)のコード**](https://github.com/FlutterKaigi/tic_tac_toe_handson/blob/release/chapter3/lib/view/board.dart)
 
 
 ### 3.4: ゲーム画面についての説明 （ゲーム盤UI 構成説明）
