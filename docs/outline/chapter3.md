@@ -196,13 +196,6 @@ class _BoardState extends State<Board> {
 - _MaterialAppは、[マテリアルライブラリ](https://api.flutter.dev/flutter/material/material-library.html)に属する **アプリケーション構成** を提供するウィジェットです。_  
 _[マテリアルライブラリ](https://api.flutter.dev/flutter/material/material-library.html)は、[マテリアルデザイン](https://m3.material.io/)が実装された **Flutterウィジェット** を提供します。_
 
-- _ThemeDataは、アプリ内のウィジェット全般の色やテキストスタイルなどのビジュアルテーマを指定するウィジェトです。_
-
-- _darkThemeは、システム設定からダークテーマが指定されたときにアプリのビジュアルテーマを指定するプロパティです。_
-
-- _ThemeDataによりアプリ全般の設定ができることを確認してみましょう。_  
-  _時間があれば ThemeDataのプロパティ [scaffoldBackgroundColor](https://api.flutter.dev/flutter/material/ThemeData/scaffoldBackgroundColor.html)にコード ⇒ `scaffoldBackgroundColor: Colors.amber,` を追加して背景色が変化することを確認してみてください。_
-
 <br/>
 
 - **作業後の MaterialApp と ThemeData のコード内容**  
@@ -223,12 +216,19 @@ _[マテリアルライブラリ](https://api.flutter.dev/flutter/material/mater
 ```
 <br/>
 
+- _ThemeDataは、アプリ内のウィジェット全般の色やテキストスタイルなどのビジュアルテーマを指定するウィジェトです。_
+
+- _darkThemeは、システム設定からダークテーマが指定されたときにアプリのビジュアルテーマを指定するプロパティです。_
+
+- _ThemeDataによりアプリ全般の設定ができることを確認してみましょう。_  
+  _時間があれば ThemeDataのプロパティ [scaffoldBackgroundColor](https://api.flutter.dev/flutter/material/ThemeData/scaffoldBackgroundColor.html)にコード ⇒ `scaffoldBackgroundColor: Colors.amber,` を追加して背景色が変化することを確認してみてください。_
+
+<br/>
+
 
 ##### 3. 不要コードの削除（ホーム画面削除）
 次にホーム画面を `MyHomePage` から、アプリ画面の足場(**[Scaffold](https://api.flutter.dev/flutter/material/Scaffold-class.html)**)に差し替えます。  
 _差し替えが終わりましたら、不要になった `MyHomePage` と `_MyHomePageState` を削除してください。_
-
-- _Scaffoldは、アプリ画面に [アプリバー](https://api.flutter.dev/flutter/material/Scaffold/appBar.html)や [ボディ ⇒ 表示コンテンツ](https://api.flutter.dev/flutter/material/Scaffold/body.html)などの足場を提供するウィジェトです。_
 
 <br/>
 
@@ -248,6 +248,10 @@ _差し替えが終わりましたら、不要になった `MyHomePage` と `_My
   }
  〜 省略 〜
 ```
+<br/>
+
+- _Scaffoldは、アプリ画面に [アプリバー](https://api.flutter.dev/flutter/material/Scaffold/appBar.html)や [ボディ ⇒ 表示コンテンツ](https://api.flutter.dev/flutter/material/Scaffold/body.html)などの足場を提供するウィジェトです。_
+
 <br/>
 
 
@@ -352,10 +356,6 @@ _具体的なコードは、（修正後）空コンテンツのゲーム画面�
 **[StatefulWidget](https://api.flutter.dev/flutter/widgets/StatefulWidget-class.html)** の **[State](https://api.flutter.dev/flutter/widgets/State-class.html)** に 
 **ゲーム進行状態のモデル([TicTacTow クラス](https://github.com/FlutterKaigi/tic_tac_toe_handson/blob/release/chapter3/lib/model/tic_tac_toe.dart))** を保持させます。
 
-- _[Column](https://api.flutter.dev/flutter/widgets/Column-class.html)は、複数の子ウィジェットを縦方向の列並びにするレイアウト・ウィジェットです。_
-- _[Row](https://api.flutter.dev/flutter/widgets/Row-class.html)は、複数の子ウィジェットを横方向の行並びにするレイアウト・ウィジェットです。_
-- _[Padding](https://api.flutter.dev/flutter/widgets/Padding-class.html)は、子ウィジェットの四方に空隙を詰めるウィジェットです。_
-
 <br/>
 
 - **（修正後）空コンテンツのゲーム画面(Board) ウィジェットのコードファイル**  
@@ -390,16 +390,18 @@ class _BoardState extends State<Board> {
 ```
 <br/>
 
+- _[Column](https://api.flutter.dev/flutter/widgets/Column-class.html)は、複数の子ウィジェットを縦方向の列並びにするレイアウト・ウィジェットです。_
+- _[Row](https://api.flutter.dev/flutter/widgets/Row-class.html)は、複数の子ウィジェットを横方向の行並びにするレイアウト・ウィジェットです。_
+- _[Padding](https://api.flutter.dev/flutter/widgets/Padding-class.html)は、子ウィジェットの四方に空隙を詰めるウィジェットです。_
+
+<br/>
+
 
 ##### 2. ３×３のマス目の追加（セル追加）
 三目並べ盤面には、３×３のマス目があります。  
 ここでは、**[GridView](https://api.flutter.dev/flutter/widgets/GridView-class.html)** という
 **グリッド ⇒ ウィジェットの2D配列 ⇒ 縦横格子レイアウト** を行うウィジェットを使ってマス目を表現します。  
 _具体的なコードは、（修正後）ゲーム画面のコードを参照ください。_
-
-- _[GridView](https://api.flutter.dev/flutter/widgets/GridView-class.html)は、いくつかの状況に対応できるよう複数のコンストラクタがあります。_  
-_ハンズオンでは、[builderコンストラクタ](https://api.flutter.dev/flutter/widgets/GridView/GridView.builder.html)を使って、_
-_横方向 3個のアイテムを 9個分描画させることで３×３のマス目を表現しています。_
 
 <br/>
 
@@ -428,6 +430,12 @@ _横方向 3個のアイテムを 9個分描画させることで３×３のマ�
 ```
 <br/>
 
+- _[GridView](https://api.flutter.dev/flutter/widgets/GridView-class.html)は、いくつかの状況に対応できるよう複数のコンストラクタがあります。_  
+_ハンズオンでは、[builderコンストラクタ](https://api.flutter.dev/flutter/widgets/GridView/GridView.builder.html)を使って、_
+_横方向 3個のアイテムを 9個分描画させることで３×３のマス目を表現しています。_
+
+<br/>
+
 
 ##### 3. ３×３のマス目の追加（縦横の罫線表示）
 三目並べ盤面の３×３のマス目が確保できたので、各マスに縦横の罫線を引きましょう。  
@@ -437,12 +445,6 @@ _横方向 3個のアイテムを 9個分描画させることで３×３のマ�
 
 各マス目に空欄を確保するだけのダミー ```return const SizedBox.expand();``` を `Container`に差し替えます。  
 _具体的なコードは、（修正後）ゲーム画面のコードを参照ください。_
-
-- _[Container](https://api.flutter.dev/flutter/widgets/Container-class.html)は、自分の描画領域や子ウィジェットに制約を与えるウィジェットです。_  
-  _このため自分の描画領域にサイズや背景色や枠線を、子ウィジェットに配置位置(右寄、中央寄、etc)や変形などの制約を与えることができます。_  
-
-- 【注意】正確にいえば罫線でなく枠線を描画しています。  
-   　　　　このため内側罫線よりも外枠が細くなっていることに注意ください。
 
 <br/>
 
@@ -461,6 +463,14 @@ _具体的なコードは、（修正後）ゲーム画面のコードを参照�
             },
             〜 省略 〜
 ```
+<br/>
+
+- _[Container](https://api.flutter.dev/flutter/widgets/Container-class.html)は、自分の描画領域や子ウィジェットに制約を与えるウィジェットです。_  
+  _このため自分の描画領域にサイズや背景色や枠線を、子ウィジェットに配置位置(右寄、中央寄、etc)や変形などの制約を与えることができます。_  
+
+- 【注意】正確にいえば罫線でなく枠線を描画しています。  
+   　　　　このため内側罫線よりも外枠が細くなっていることに注意ください。
+
 <br/>
 
 
@@ -551,9 +561,6 @@ setState(() {
 ここでは、`GestureDetector`でマス目を描画する `Container`をラップし `onTap ハンドラ`を使ってタップのハンドリングを行なわせましょう。  
 _具体的なコードは、（修正後）ゲーム画面のコードを参照ください。_
 
-- _【備考】新しいゲーム進行状態への状態遷移により、カレント指し手がマス目に描画されます。_  
-  _この描画は１つ前で追加した、**３×３のマス目の追加（○×マーク表示）** により行われます。_
-
 <br/>
 
 - **（修正後）ゲーム画面(Board) ウィジェットのコード内容**  
@@ -590,6 +597,11 @@ _具体的なコードは、（修正後）ゲーム画面のコードを参照�
             },
             〜 省略 〜
 ```
+<br/>
+
+- _【備考】新しいゲーム進行状態への状態遷移により、カレント指し手がマス目に描画されます。_  
+  _この描画は１つ前で追加した、**３×３のマス目の追加（○×マーク表示）** により行われます。_
+
 <br/>
 
 
@@ -733,14 +745,6 @@ class _BoardState extends State<Board> {
 **Textウィジェット**を **[Padding ウィジェット](https://api.flutter.dev/flutter/widgets/Padding-class.html)** でラップしましょう。  
 _具体的なコードは、（修正後）ゲーム画面のコードを参照ください。_
 
-- _**[Theme.of(BuildContext)](https://api.flutter.dev/flutter/material/Theme/of.html)** メソッドは、_
-  _**[ThemeData](https://api.flutter.dev/flutter/material/ThemeData-class.html) オブジェクト**を返します。_  
-  _その **[textTheme プロパティ](https://api.flutter.dev/flutter/material/ThemeData/textTheme.html)** は、TextThemeを表します。_
-
-- _**[TextTheme](https://api.flutter.dev/flutter/material/TextTheme-class.html)** は、_
-  _[マテリアルデザイン]((https://m3.material.io/)のテキスト・テーマを表します。_  
-  _**[headlineSmall プロパティ](https://api.flutter.dev/flutter/material/TextTheme/headlineSmall.html)** は、最小の見出しスタイルです。_
-
 <br/>
 
 - **（修正後）ゲーム画面(Board) ウィジェットのコード内容**  
@@ -760,6 +764,16 @@ _具体的なコードは、（修正後）ゲーム画面のコードを参照�
           //
           〜 省略 〜
 ```
+<br/>
+
+- _**[Theme.of(BuildContext)](https://api.flutter.dev/flutter/material/Theme/of.html)** メソッドは、_
+  _**[ThemeData](https://api.flutter.dev/flutter/material/ThemeData-class.html) オブジェクト**を返します。_  
+  _その **[textTheme プロパティ](https://api.flutter.dev/flutter/material/ThemeData/textTheme.html)** は、TextThemeを表します。_
+
+- _**[TextTheme](https://api.flutter.dev/flutter/material/TextTheme-class.html)** は、_
+  _[マテリアルデザイン]((https://m3.material.io/)のテキスト・テーマを表します。_  
+  _**[headlineSmall プロパティ](https://api.flutter.dev/flutter/material/TextTheme/headlineSmall.html)** は、最小の見出しスタイルです。_
+
 <br/>
 
 
@@ -889,13 +903,6 @@ setState(() {
 _**[SizedBox](https://api.flutter.dev/flutter/widgets/SizedBox-class.html)** は、横幅無制限指定（`width: double.infinity`）してリセットボタン幅を調整するためにラップしたり、三目並べ盤面とのあいだの「空隙」に使われています。_  
 _具体的なコードは、（修正後）ゲーム画面のコードを参照ください。_
 
-- _**[ElevatedButton](https://api.flutter.dev/flutter/material/ElevatedButton-class.html)** は、_
-  _マテリアルデザインのエレベーション（背景との高低差概念により浮き上がっているように見せる）が表現されたボタン。_  
-  _タップ時のハンドラは、**[onPressed プロパティ](https://api.flutter.dev/flutter/material/ButtonStyleButton/onPressed.html)** で指定できます。_
-
-- _**[SizedBox](https://api.flutter.dev/flutter/widgets/SizedBox-class.html)** は、自分または子ウィジェットに特定の幅および高さを強制します。_  
-  _ただし SizedBoxの親となるウィジェットで強制指定があれば、親制約が優先されます。_ 
-
 <br/>
 
 - **（修正後）ゲーム画面(Board) ウィジェットのコード内容**  
@@ -927,6 +934,15 @@ _具体的なコードは、（修正後）ゲーム画面のコードを参照�
         ),
         〜 省略 〜
 ```
+<br/>
+
+- _**[ElevatedButton](https://api.flutter.dev/flutter/material/ElevatedButton-class.html)** は、_
+  _マテリアルデザインのエレベーション（背景との高低差概念により浮き上がっているように見せる）が表現されたボタン。_  
+  _タップ時のハンドラは、**[onPressed プロパティ](https://api.flutter.dev/flutter/material/ButtonStyleButton/onPressed.html)** で指定できます。_
+
+- _**[SizedBox](https://api.flutter.dev/flutter/widgets/SizedBox-class.html)** は、自分または子ウィジェットに特定の幅および高さを強制します。_  
+  _ただし SizedBoxの親となるウィジェットで強制指定があれば、親制約が優先されます。_
+
 <br/>
 
 
