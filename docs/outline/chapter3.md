@@ -193,9 +193,6 @@ class _BoardState extends State<Board> {
 
 またダークテーマ対応として、MaterialAppのプロパティ [darkTheme](https://api.flutter.dev/flutter/material/MaterialApp/darkTheme.html) を設定するコード ⇒ `darkTheme: ThemeData.dark(),`を追加してみてください。  
 
-- _MaterialAppは、[マテリアルライブラリ](https://api.flutter.dev/flutter/material/material-library.html)に属する **アプリケーション構成** を提供するウィジェットです。_  
-_[マテリアルライブラリ](https://api.flutter.dev/flutter/material/material-library.html)は、[マテリアルデザイン](https://m3.material.io/)が実装された **Flutterウィジェット** を提供します。_
-
 <br/>
 
 - **作業後の MaterialApp と ThemeData のコード内容**  
@@ -215,6 +212,9 @@ _[マテリアルライブラリ](https://api.flutter.dev/flutter/material/mater
  〜 省略 〜
 ```
 <br/>
+
+- _MaterialAppは、[マテリアルライブラリ](https://api.flutter.dev/flutter/material/material-library.html)に属する **アプリケーション構成** を提供するウィジェットです。_  
+  _[マテリアルライブラリ](https://api.flutter.dev/flutter/material/material-library.html)は、[マテリアルデザイン](https://m3.material.io/)が実装された **Flutterウィジェット** を提供します。_
 
 - _ThemeDataは、アプリ内のウィジェット全般の色やテキストスタイルなどのビジュアルテーマを指定するウィジェトです。_
 
@@ -491,8 +491,6 @@ itemBuilder: (context, index) {
 またマス目ごとに ○×マークを描画するため、`Containerの childプロパティ`に `Text(mark)`を追加します。  
 _具体的なコードは、（修正後）ゲーム画面のコードを参照ください。_
 
-_**先攻と後攻の指手が交代するごとに、ゲーム盤面全体が更新される** ことに留意ください。_
-
 <br/>
 
 - **（修正後）ゲーム画面(Board) ウィジェットのコード内容**  
@@ -522,6 +520,10 @@ _**先攻と後攻の指手が交代するごとに、ゲーム盤面全体が�
               );
               〜 省略 〜
 ```
+<br/>
+
+- _**先攻と後攻の指手が交代するごとに、ゲーム盤面全体が更新される** ことに留意ください。_
+
 <br/>
 
 
