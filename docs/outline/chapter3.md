@@ -894,7 +894,7 @@ _具体的なコードは、（修正後）ゲーム画面のコードを参照�
   _タップ時のハンドラは、**[onPressed プロパティ](https://api.flutter.dev/flutter/material/ButtonStyleButton/onPressed.html)** で指定できます。_
 
 - _**[SizedBox](https://api.flutter.dev/flutter/widgets/SizedBox-class.html)** は、自分または子ウィジェットに特定の幅および高さを強制します。_  
-  _注意：ただし SizedBoxの親となるウィジェットで強制指定があれば、親制約が優先されます。_ 
+  _ただし SizedBoxの親となるウィジェットで強制指定があれば、親制約が優先されます。_ 
 
 <br/>
 
@@ -933,6 +933,17 @@ _具体的なコードは、（修正後）ゲーム画面のコードを参照�
 ##### 3. ゲーム・リセットボタンの追加（修正全容）
 - **（修正全容）ゲーム画面(Board) ウィジェットのコード内容**  
 ```dart
+import 'package:flutter/material.dart';
+
+class Board extends StatefulWidget {
+  const Board({Key? key}) : super(key: key);
+
+  @override
+  State<StatefulWidget> createState() {
+    return _BoardState();
+  }
+}
+
 class _BoardState extends State<Board> {
    TicTacToe ticTacToe = TicTacToe.start(playerX: 'Dash', playerO: 'Sparky');
 
