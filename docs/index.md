@@ -36,7 +36,7 @@ Flutter 開発における状態管理の手法として注目を集めている
 
 <BaseProfile avatar-url="/staff/daichi-aoki.png" name="ちっぴー" title="FlutterとFirebaseをよく扱っており、Riverpodは重宝しております！ハンズオンを通して学びを一緒に深めていきましょう👾" twitter-url="https://twitter.com/chippy_ao" />
 
-<BaseProfile avatar-url="/staff/rie-kanetaka.png" name="robo" title="既存 iOS/Android ネイティブアプリの Flutter リプレースに携わっております。Flutter の威力を見てください。" twitter-url="https://twitter.com/cch_robo" />
+<BaseProfile avatar-url="/staff/rie-kanetaka.png" name="robo" title="既存 iOS/Android ネイティブアプリの Flutter リプレースに携わっております。Flutter の底力を見てくださいね。" twitter-url="https://twitter.com/cch_robo" />
 
 <BaseProfile avatar-url="/staff/yuma-kitamura.png" name="jiyuujin" title="少し前に副業で Flutter + Provider を使ったアプリ開発で経験させてもらいつつ、一昨年・昨年は FlutterKaigi ウェブサイトのコントビュート・リードもさせていただいておりました。" sns-url="https://twitter.com/jiyuujinlab" />
 
