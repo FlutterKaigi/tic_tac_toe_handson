@@ -1293,4 +1293,4 @@ Board ウィジェットは、状態遷移イベント、指し手イベント�
 
 ## コントリビューター
 
-<BaseProfile avatar-url="/staff/rie-kanetaka.png" name="robo" title="既存 iOS/Android ネイティブアプリの Flutter リプレースに携わっています。Flutter の底力を見てください。" twitter-url="https://twitter.com/cch_robo" />
+<BaseProfile avatar-url="/staff/rie-kanetaka.png" name="robo" title="既存 iOS/Android ネイティブアプリの Flutter リプレースに携わっています。Flutter の底力を見てくださいね。" twitter-url="https://twitter.com/cch_robo" />
