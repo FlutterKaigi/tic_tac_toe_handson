@@ -34,11 +34,12 @@
 1. **[TicTacTow クラス](https://github.com/FlutterKaigi/tic_tac_toe_handson/blob/release/chapter3/lib/model/tic_tac_toe.dart)**  
 TicTacToe クラスは、三目並べゲームロジックのモデルです。  
 そのインスタンス・オブジェクトは、三目並べゲームの「**盤面状態値**」と「**今回のプレーヤー値**」および「**盤面更新**」「**勝敗判定**」の機能を持っています。  
+
 つまり「**次のゲームプレイ状態を提供**」できるようにする「**ある時点のゲーム進行状態**」を表すことができます。  
 　  
-_「**ゲームプレイの初期状態**」や、指し手により盤面更新された「**次のゲームプレイ状態**」および、
+_**ゲームロジックのモデル**は、「**ゲームプレイの初期状態**」や、指し手により盤面更新された「**次のゲームプレイ状態**」および、
 ゲーム再開のための「**新しいゲームプレイの初期状態**」を提供することに留意ください。  
-これはゲームプレイ状態を保持して状態遷移を管理するコントローラではないことを表します。_  
+これはプレイ状態を保持して状態遷移を管理するコントローラではないことを表します。_  
 <br/>
 
 2. **[Players クラス](https://github.com/FlutterKaigi/tic_tac_toe_handson/blob/release/chapter3/lib/model/players.dart)**  
@@ -76,6 +77,7 @@ class TicTacToe {
 ### 3.2: UI 作成手順概要 （ゲーム画面の作成ステップ）
 
 前章までの作業は、flutter プロジェクトの新規作成とゲームロジックのモデルの新規追加までとなっています。  
+
 このためアプリの UIは、カウンターアプリのままですから、以下の手順で、三目並べを遊ぶための画面を作り上げていきます。
 
 1. main パッケージの修正  
@@ -188,6 +190,7 @@ class _BoardState extends State<Board> {
 カウンターアプリのコードには、たくさんのコメントがあります。  
 コードの見通しを良くするため **[MaterialApp](https://api.flutter.dev/flutter/material/MaterialApp-class.html)** の中にある 
 **[ThemeData](https://api.flutter.dev/flutter/material/ThemeData-class.html)** のコメントを削除しましょう。  
+
 またダークテーマ対応として、MaterialAppのプロパティ [darkTheme](https://api.flutter.dev/flutter/material/MaterialApp/darkTheme.html) を設定するコード ⇒ `darkTheme: ThemeData.dark(),`を追加してみてください。  
 
 - _MaterialAppは、[マテリアルライブラリ](https://api.flutter.dev/flutter/material/material-library.html)に属する **アプリケーション構成** を提供するウィジェットです。_  
@@ -255,6 +258,7 @@ _差し替えが終わりましたら、不要になった `MyHomePage` と `_My
 
 画面にアプリバーが追加されたのでハンズオン・アプリを示すよう、
 `AppBar`の **タイトル・プロパティ([title](https://api.flutter.dev/flutter/material/AppBar/title.html))** に **'FlutterKaigi 2023 - TicTacToe'** を設定します。  
+
 また `MaterialApp`の **タイトル・プロパティ([title](https://api.flutter.dev/flutter/material/MaterialApp/title.html))** にも同様に **'FlutterKaigi 2023 - TicTacToe’** を設定してください。
 
 <br/>
@@ -335,10 +339,12 @@ class MyApp extends StatelessWidget {
 
 ##### 1. 空コンテンツのゲーム画面の修正
 前章で新規作成した **空コンテンツのゲーム画面(`Board ウィジェット`)** は、画面いっぱいに空欄を表示するだけでした。  
+
 ゲーム画面は、三目並べ盤面だけではなくメッセージ欄もありますので、任意複数のコンテンツを追加できるように修正します。
 
 三目並べのゲーム画面は、縦方向にコンテンツが並びます。 このためコンテンツを列表示させる **[Column ウィジェット](https://api.flutter.dev/flutter/widgets/Column-class.html)** を使います。  
 そしてコンテンツが画面端に付かないようにする ⇒ 四方枠に空隙をとる ⇒ ため、`Column` を **[Padding ウィジェット](https://api.flutter.dev/flutter/widgets/Padding-class.html)** でラップします。  
+
 このような設計により最初のコード ```return const SizedBox.expand();``` を、**Paddingと Columnの入れ子** に差し替えます。  
 _具体的なコードは、（修正後）空コンテンツのゲーム画面のコードを参照ください。_
 
@@ -367,7 +373,8 @@ class Board extends StatefulWidget {
 }
 
 class _BoardState extends State<Board> {
-  TicTacToe ticTacToe = TicTacToe.start(playerX: 'Dash', playerO: 'Sparky'); //【新規追加】ゲーム進行状態の初期値
+  //【新規追加】ゲーム進行状態の初期値
+  TicTacToe ticTacToe = TicTacToe.start(playerX: 'Dash', playerO: 'Sparky');
 
   @override
   Widget build(BuildContext context) {
