@@ -153,7 +153,7 @@ class TicTacToe {
 
 #### 3.3.1: main パッケージの修正
 
-##### 1. ゲーム画面ウィジェット（はじめは空コンテンツの）を新規作成
+##### 1. ゲーム画面ウィジェット（はじめは空コンテンツ）の新規作成
 プロジェクトにゲーム画面（`Board` ⇒ はじめは空コンテンツ）を新規追加します。  
 IDEやエディタで `libディレクトリ`に `view ディレクトリ`を新規追加して、空コンテンツのゲーム画面(`board.dart`)ファイルを追加してください。
 
@@ -186,8 +186,8 @@ class _BoardState extends State<Board> {
 
 ##### 2. 不要コードの削除（コメント削除）  
 カウンターアプリのコードには、たくさんのコメントがあります。  
-コードの見通しを良くするため[`MaterialApp`](https://api.flutter.dev/flutter/material/MaterialApp-class.html)の中にある 
-[`ThemeData`](https://api.flutter.dev/flutter/material/ThemeData-class.html)のコメントを削除しましょう。  
+コードの見通しを良くするため **[MaterialApp](https://api.flutter.dev/flutter/material/MaterialApp-class.html)** の中にある 
+**[ThemeData](https://api.flutter.dev/flutter/material/ThemeData-class.html)** のコメントを削除しましょう。  
 またダークテーマ対応として、MaterialAppのプロパティ [darkTheme](https://api.flutter.dev/flutter/material/MaterialApp/darkTheme.html) を設定するコード ⇒ `darkTheme: ThemeData.dark(),`を追加してみてください。  
 
 - _MaterialAppは、[マテリアルライブラリ](https://api.flutter.dev/flutter/material/material-library.html)に属する **アプリケーション構成** を提供するウィジェットです。_  
@@ -222,10 +222,10 @@ _[マテリアルライブラリ](https://api.flutter.dev/flutter/material/mater
 
 
 ##### 3. 不要コードの削除（ホーム画面削除）
-次にホーム画面を `MyHomePage` から、アプリ画面の足場([`Scaffold`](https://api.flutter.dev/flutter/material/Scaffold-class.html))に差し替えます。  
+次にホーム画面を `MyHomePage` から、アプリ画面の足場(**[Scaffold](https://api.flutter.dev/flutter/material/Scaffold-class.html)**)に差し替えます。  
 _差し替えが終わりましたら、不要になった `MyHomePage` と `_MyHomePageState` を削除してください。_
 
-- _Scaffoldは、アプリ画面に [アプリバー](https://api.flutter.dev/flutter/material/Scaffold/appBar.html)や [ボディ(表示コンテンツ)](https://api.flutter.dev/flutter/material/Scaffold/body.html)などの足場を提供するウィジェトです。_
+- _Scaffoldは、アプリ画面に [アプリバー](https://api.flutter.dev/flutter/material/Scaffold/appBar.html)や [ボディ ⇒ 表示コンテンツ](https://api.flutter.dev/flutter/material/Scaffold/body.html)などの足場を提供するウィジェトです。_
 
 <br/>
 
@@ -250,7 +250,7 @@ _差し替えが終わりましたら、不要になった `MyHomePage` と `_My
 
 ##### 4. アプリタイトル表示を追加
 一つ前の作業ステップで、`MyHomePage`を削除したのでアプリバーがなくなっています。  
-アプリバーを表示させるため [`Scaffold`](https://api.flutter.dev/flutter/material/Scaffold-class.html)の **アプリバー・プロパティ([appBar](https://api.flutter.dev/flutter/material/Scaffold/appBar.html))** に
+アプリバーを表示させるため **[Scaffold](https://api.flutter.dev/flutter/material/Scaffold-class.html)** の **アプリバー・プロパティ([appBar](https://api.flutter.dev/flutter/material/Scaffold/appBar.html))** に
 **アプリケーションバー・ウィジェット([AppBar](https://api.flutter.dev/flutter/material/AppBar-class.html))** を追加します。
 
 画面にアプリバーが追加されたのでハンズオン・アプリを示すよう、
@@ -284,7 +284,7 @@ _差し替えが終わりましたら、不要になった `MyHomePage` と `_My
 
 ##### 5. アプリコンテンツ（ゲーム画面）表示を追加
 アプリバーを追加したので、残るゲーム画面をアプリボディに追加しましょう。  
-ゲーム画面を表示させるため [`Scaffold`](https://api.flutter.dev/flutter/material/Scaffold-class.html)の 
+ゲーム画面を表示させるため **[Scaffold](https://api.flutter.dev/flutter/material/Scaffold-class.html)** の 
 **ボディ・プロパティ([body](https://api.flutter.dev/flutter/material/Scaffold/body.html))** に **ゲーム画面・ウィジェット(`Board`)** を追加します。
 
 _【注意】現状のゲーム画面(`Board`)は、何も表示するものがありません。_
@@ -460,7 +460,7 @@ _具体的なコードは、（修正後）ゲーム画面のコードを参照�
 ##### 4. ３×３のマス目の追加（○×マーク表示）
 三目並べ盤面の３×３のマス目には、先攻と後攻指手の○×マークが描画されます。  
 先攻と後攻指手の○×マークは、ある時点の **ゲーム進行状態のモデル([TicTacTow クラス](https://github.com/FlutterKaigi/tic_tac_toe_handson/blob/release/chapter3/lib/model/tic_tac_toe.dart)) オブジェクト** の
-2次元配列(`List<List<String>> board`)に記録されているので、以下のような行列判定と○×マークを取得するコードを追加します。
+2次元配列(`List<List<String>> board`)に記録されているので、以下のような「行と列」の判定と「マス目の ○×マーク」を取得するコードを追加します。
 
 ```dart
 itemBuilder: (context, index) {
@@ -515,8 +515,9 @@ _**先攻と後攻の指手が交代するごとに、ゲーム盤面全体が�
 有効であれば**カレント指し手が記録された「新しいゲーム進行状態」に状態遷移する**ことが求められることを示します。
 
 タップ・イベントをハンドリングするウィジェット ⇒ タップに対応する任意処理を指定できるウィジェットには、
-**[GestureDetector](https://api.flutter.dev/flutter/widgets/GestureDetector-class.html)** があります。  
-[GestureDetector](https://api.flutter.dev/flutter/widgets/GestureDetector-class.html)は、
+**[GestureDetector](https://api.flutter.dev/flutter/widgets/GestureDetector-class.html)** があります。
+
+- [GestureDetector](https://api.flutter.dev/flutter/widgets/GestureDetector-class.html)は、
 [child プロパティ](https://api.flutter.dev/flutter/widgets/GestureDetector/child.html)にタップを監視するウィジェットを指定でき、
 [onTap プロパティ](https://api.flutter.dev/flutter/widgets/GestureDetector/onTap.html)にタップ時の対応を指定できます。  
 
@@ -529,10 +530,12 @@ _**先攻と後攻の指手が交代するごとに、ゲーム盤面全体が�
 
 ```dart
 setState(() {
-  //カレント指し手が有効か否かをチェックするため、カレント指し手のマス目(mark)が現在空欄であり、勝敗もついていないことを確認する。
+  //カレント指し手が有効か否かをチェックするため、
+  //カレント指し手のマス目(mark)が現在空欄であり、勝敗もついていないことを確認する。
   final winner = ticTacToe.getWinner();
   if (mark.isEmpty && winner.isEmpty) {
-    //カレント指し手が有効であれば、カレント指し手がゲーム盤面に反映された「新しいゲーム進行状態」を生成する。
+    //カレント指し手が有効であれば、
+    //カレント指し手がゲーム盤面に反映された「新しいゲーム進行状態」を生成する。
     ticTacToe = ticTacToe.placeMark(row, col);
   }
 });
@@ -541,8 +544,8 @@ setState(() {
 ここでは、`GestureDetector`でマス目を描画する `Container`をラップし `onTap ハンドラ`を使ってタップのハンドリングを行なわせましょう。  
 _具体的なコードは、（修正後）ゲーム画面のコードを参照ください。_
 
-- 【備考】新しいゲーム進行状態への状態遷移により、カレント指し手がマス目に描画されます。  
-  　　　　この描画は１つ前で追加した、**３×３のマス目の追加（○×マーク表示）** により行われます。
+- _【備考】新しいゲーム進行状態への状態遷移により、カレント指し手がマス目に描画されます。_  
+  _この描画は１つ前で追加した、**３×３のマス目の追加（○×マーク表示）** により行われます。_
 
 <br/>
 
@@ -658,7 +661,8 @@ class _BoardState extends State<Board> {
 
 ##### 1. ゲーム進行状態からメッセージを作るロジックの追加
 ゲームの進行は、「対局の勝敗が決定する」まで繰り返されます。  
-これは「現在未決着なので、次の指し手を依頼」の繰り返しから、「既にいずれかが勝利したのでゲーム終了」まで **状態遷移**を続けることでもあります。  
+これは **「現在未決着なので、次の指し手を依頼」** の繰り返しから、**「既にいずれかが勝利したのでゲーム終了」** まで **状態遷移**を続けることでもあります。  
+
 つまりゲーム進行状態 ⇒ **ゲーム進行状態のモデル([TicTacTow クラス](https://github.com/FlutterKaigi/tic_tac_toe_handson/blob/release/chapter3/lib/model/tic_tac_toe.dart)) オブジェクト** の状況から、
 **現在未決着**と判定されれば **次の指し手を依頼**し、**既にいずれかが勝利**と判定されれば **いずれかの勝利でゲーム終了**のメッセージが作られれば良いことになります。  
 このロジックを関数化すると、以下のようになります。
@@ -874,7 +878,8 @@ setState(() {
 イベント・ハンドラに前ステップのゲームリセット・ロジックを指定します。  
 
 またここでは、**リセットボタン**と **三目並べ盤面**とのサイズや配置位置の調整として **[SizedBox ウィジェット](https://api.flutter.dev/flutter/widgets/SizedBox-class.html)** を利用しています。  
-_**[SizedBox](https://api.flutter.dev/flutter/widgets/SizedBox-class.html)** は、リセットボタン幅を調整するために横幅無制限指定（`width: double.infinity`）してラップしたり、三目並べ盤面とのあいだの「空隙」に使われています。_  
+
+_**[SizedBox](https://api.flutter.dev/flutter/widgets/SizedBox-class.html)** は、横幅無制限指定（`width: double.infinity`）してリセットボタン幅を調整するためにラップしたり、三目並べ盤面とのあいだの「空隙」に使われています。_  
 _具体的なコードは、（修正後）ゲーム画面のコードを参照ください。_
 
 - _**[ElevatedButton](https://api.flutter.dev/flutter/material/ElevatedButton-class.html)** は、_
