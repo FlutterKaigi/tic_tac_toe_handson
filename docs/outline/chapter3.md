@@ -654,8 +654,197 @@ class _BoardState extends State<Board> {
 
 
 #### 3.3.3: メッセージ表示欄の追加
-ゲーム画面に「ゲーム進行状態」から **今回の指手や、ゲーム勝敗終了** を表示する、  
-メッセージ欄を新規追加します。  
+「ゲーム進行状態」から **今回の指手や、ゲーム勝敗終了** を表示する、メッセージ欄を新規追加します。  
+
+##### 1. ゲーム進行状態からメッセージを作るロジックの追加
+ゲームの進行は、「対局の勝敗が決定する」まで繰り返されます。  
+これは「現在未決着なので、次の指し手を依頼」の繰り返しから、「既にいずれかが勝利してたのでゲーム終了」まで **状態遷移**を続けることでもあります。  
+つまりゲーム進行状態 ⇒ **ゲーム進行状態のモデル([TicTacTow クラス](https://github.com/FlutterKaigi/tic_tac_toe_handson/blob/release/chapter3/lib/model/tic_tac_toe.dart)) オブジェクト** の状況から、
+**現在未決着**と判定されれば **次の指し手を依頼**し、**既にいずれかが勝利**と判定されれば **いずれかの勝利でゲーム終了**のメッセージが作られれば良いことになります。  
+このロジックを関数化すると、以下のようになります。
+
+```dart
+/// 今回の指し手の依頼や、勝利か引き分けかのメッセージを作成
+String _statusMessage(TicTacToe ticTacToe) {
+  //三目並べ盤面状況から、勝利者を判定
+  final winner = ticTacToe.getWinner();
+
+  //三目並べ盤面状況から、引き分けを判定
+  final isDraw = ticTacToe.isDraw();
+
+  if (winner.isNotEmpty) {
+    return '$winnerの勝ち';
+  } else if (isDraw) {
+    return '引き分けです';
+  } else {
+    //勝利も引き分けでもないので、次の指し手を依頼
+    return '${ticTacToe.currentPlayer}の番';
+  }
+}
+```
+
+それでは、ゲーム画面のステートを表す `_BoardState`の末尾に、この `_statusMessage()`関数を追加しましょう。  
+_具体的なコードは、（修正後）ゲーム画面のコードを参照ください。_
+<br/>
+
+- **（修正後）ゲーム画面(Board) ウィジェットのコード内容**
+```dart
+class _BoardState extends State<Board> {
+  TicTacToe ticTacToe = TicTacToe.start(playerX: 'Dash', playerO: 'Sparky');
+
+  〜 省略 〜
+
+  //【新規追加】（ここから）
+  /// 今回の指し手の依頼や、勝利か引き分けかのメッセージを作成
+  String _statusMessage(TicTacToe ticTacToe) {
+    final winner = ticTacToe.getWinner();
+    final isDraw = ticTacToe.isDraw();
+
+    if (winner.isNotEmpty) {
+      return '$winnerの勝ち';
+    } else if (isDraw) {
+      return '引き分けです';
+    } else {
+      return '${ticTacToe.currentPlayer}の番';
+    }
+  }
+  //【新規追加】（ここまで）
+}
+```
+<br/>
+
+
+##### 2. メッセージを表示する Textウィジェットの追加
+ゲーム進行状態から、「今回の指し手の依頼や、勝利か引き分けかのメッセージ」を作る `_statusMessage()`関数が追加されたので、
+ゲーム画面のヘッダーにメッセージを表示する **Textウィジェット**を追加します。
+
+さらにメッセージが画面端に付かないようにする ⇒ 四方枠に空隙をとる ⇒ ため、
+**Textウィジェット**を **[Padding ウィジェット](https://api.flutter.dev/flutter/widgets/Padding-class.html)** でラップしましょう。  
+_具体的なコードは、（修正後）ゲーム画面のコードを参照ください。_
+
+- _**[Theme.of(BuildContext)](https://api.flutter.dev/flutter/material/Theme/of.html)** メソッドは、_
+  _**[ThemeData](https://api.flutter.dev/flutter/material/ThemeData-class.html) オブジェクト**を返します。_  
+  _その **[textTheme プロパティ](https://api.flutter.dev/flutter/material/ThemeData/textTheme.html)** は、TextThemeを表します。_
+
+- _**[TextTheme](https://api.flutter.dev/flutter/material/TextTheme-class.html)** は、_
+  _[マテリアルデザイン]((https://m3.material.io/)のテキスト・テーマを表します。_  
+  _**[headlineSmall プロパティ](https://api.flutter.dev/flutter/material/TextTheme/headlineSmall.html)** は、最小の見出しスタイルです。_
+
+<br/>
+
+- **（修正全容）ゲーム画面(Board) ウィジェットのコード内容**
+```dart
+        〜 省略 〜
+        children: [
+          //【新規追加】（ここから）
+          // メッセージ表示欄
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: Text(
+              _statusMessage(ticTacToe),
+              style: Theme.of(context).textTheme.headlineSmall,
+            ),
+          ),
+          //【新規追加（ここまで）
+          //
+          〜 省略 〜
+```
+<br/>
+
+
+#### 3. メッセージ表示欄の追加（修正全容）
+- **（修正全容）ゲーム画面(Board) ウィジェットのコード内容**
+```dart
+class _BoardState extends State<Board> {
+  TicTacToe ticTacToe = TicTacToe.start(playerX: 'Dash', playerO: 'Sparky');
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        children: [
+          //【新規追加】（ここから）
+          // メッセージ表示欄
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: Text(
+              _statusMessage(ticTacToe),
+              style: Theme.of(context).textTheme.headlineSmall,
+            ),
+          ),
+          //【新規追加（ここまで）
+          //
+          // 三目並べ盤面
+          GridView.builder(
+            shrinkWrap: true,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3,
+            ),
+            itemCount: 9,
+            itemBuilder: (context, index) {
+              final row = index ~/ 3;
+              final col = index % 3;
+              final mark = ticTacToe.board[row][col];
+
+              return GestureDetector(
+                onTap: () {
+                  setState(() {
+                    final winner = ticTacToe.getWinner();
+                    if (mark.isEmpty && winner.isEmpty) {
+                      ticTacToe = ticTacToe.placeMark(row, col);
+                    }
+                  });
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.grey),
+                  ),
+                  child: Center(
+                    child: Text(
+                      mark,
+                      style: const TextStyle(fontSize: 32),
+                    ),
+                  ),
+                ),
+              );
+            },
+          ),
+          //
+        ],
+      ),
+    );
+  }
+
+  //【新規追加】（ここから）
+  // 今回の指し手の依頼や、勝利か引き分けかのメッセージを作成
+  String _statusMessage(TicTacToe ticTacToe) {
+    final winner = ticTacToe.getWinner();
+    final isDraw = ticTacToe.isDraw();
+
+    if (winner.isNotEmpty) {
+      return '$winnerの勝ち';
+    } else if (isDraw) {
+      return '引き分けです';
+    } else {
+      return '${ticTacToe.currentPlayer}の番';
+    }
+  }
+  //【新規追加】（ここまで）
+}
+```
+<br/>
+
+<ul>
+  メッセージ表示欄の追加（修正全容）<br/>
+  <img src="../images/chapter3/chapter_3_3_3-3.png" alt="メッセージ表示欄の追加（修正全容）" style="max-width:50%;">
+  <!--
+  ![メッセージ表示欄の追加（修正全容）](../images/chapter3/chapter_3_3_3-3.png)
+  -->
+  <br/>
+  <br/>
+</ul>
+<br/>
 
 
 #### 3.3.4: ゲーム・リセットボタンの追加
