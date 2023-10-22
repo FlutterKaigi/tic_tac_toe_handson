@@ -850,27 +850,228 @@ class _BoardState extends State<Board> {
 #### 3.3.4: ゲーム・リセットボタンの追加
 新しいゲーム（ゲームプレイの初期状態）へ **状態遷移** させるリセット・ボタンを追加します。  
 
+##### 1. ゲームリセット・ロジックの確認
+リセットボタンは、新しいゲーム（ゲーム進行初期状態）に **ゲーム進行状態**を **状態遷移** させることを示します。
+**ゲーム進行状態のモデル([TicTacTow クラス](https://github.com/FlutterKaigi/tic_tac_toe_handson/blob/release/chapter3/lib/model/tic_tac_toe.dart))** には、
+ゲーム進行初期状態を作る専用メソッド `resetBoard()`が提供されていたことを思い出してください。
+
+よってリセットボタンのタップにより `resetBoard()`メソッドが、
+**[StatefulWidget](https://api.flutter.dev/flutter/widgets/StatefulWidget-class.html)** の状態を更新する
+**[State](https://api.flutter.dev/flutter/widgets/State-class.html)** の
+**[setState()](https://api.flutter.dev/flutter/widgets/State/setState.html)** で実行されるようにすれば良いことになります。  
+このロジックは、以下のようなシンプルなものになります。
+
+```dart
+setState(() {
+  ticTacToe = ticTacToe.resetBoard();
+});
+```
+<br/>
+
+
 ##### 2. リセットボタンの追加
+ゲーム画面のフッターにゲーム・リセットボタンとして表示するため **[ElevatedButton](https://api.flutter.dev/flutter/material/ElevatedButton-class.html)** を追加して、
+イベント・ハンドラに前ステップのゲームリセット・ロジックを指定します。  
+
+またここでは、**リセットボタン**と **三目並べ盤面**とのサイズや配置位置の調整として **[SizedBox ウィジェット](https://api.flutter.dev/flutter/widgets/SizedBox-class.html)** を利用しています。  
+_**[SizedBox](https://api.flutter.dev/flutter/widgets/SizedBox-class.html)** は、リセットボタン幅を調整するために横幅無制限指定（`width: double.infinity`）してラップしたり、三目並べ盤面とのあいだの「空隙」に使われています。_  
+_具体的なコードは、（修正後）ゲーム画面のコードを参照ください。_
+
+- _**[ElevatedButton](https://api.flutter.dev/flutter/material/ElevatedButton-class.html)** は、_
+  _マテリアルデザインのエレベーション（背景との高低差概念により浮き上がっているように見せる）が表現されたボタン。_  
+  _タップ時のハンドラは、**[onPressed プロパティ](https://api.flutter.dev/flutter/material/ButtonStyleButton/onPressed.html)** で指定できます。_
+
+- _**[SizedBox](https://api.flutter.dev/flutter/widgets/SizedBox-class.html)** は、自分または子ウィジェットに特定の幅および高さを強制します。_  
+  _注意：ただし SizedBoxの親となるウィジェットで強制指定があれば、親制約が優先されます。_ 
+
+<br/>
 
 - **（修正後）ゲーム画面(Board) ウィジェットのコード内容**  
+```dart
+        〜 省略 〜
+        child: Column(
+          children: [
+          〜 省略 〜
+          //
+          //【新規追加】（ここから）
+          // 盤面との空隙
+          const SizedBox(height: 16),
+          //
+          // ゲーム・リセットボタン
+          SizedBox(
+            width: double.infinity,
+            child: ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  ticTacToe = ticTacToe.resetBoard();
+                });
+              },
+              child: const Text('ゲームをリセット'),
+            ),
+          ),
+          //【新規追加】（ここまで）
+          //
+          ],
+        ),
+        〜 省略 〜
+```
+<br/>
+
 
 ##### 3. ゲーム・リセットボタンの追加（修正全容）
 - **（修正全容）ゲーム画面(Board) ウィジェットのコード内容**  
+```dart
+class _BoardState extends State<Board> {
+   TicTacToe ticTacToe = TicTacToe.start(playerX: 'Dash', playerO: 'Sparky');
+
+   @override
+   Widget build(BuildContext context) {
+      return Padding(
+         padding: const EdgeInsets.all(16),
+         child: Column(
+            children: [
+               // メッセージ表示欄
+               Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Text(
+                     _statusMessage(ticTacToe),
+                     style: Theme.of(context).textTheme.headlineSmall,
+                  ),
+               ),
+               //
+               // 三目並べ盤面
+               GridView.builder(
+                  shrinkWrap: true,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                     crossAxisCount: 3,
+                  ),
+                  itemCount: 9,
+                  itemBuilder: (context, index) {
+                     final row = index ~/ 3;
+                     final col = index % 3;
+                     final mark = ticTacToe.board[row][col];
+
+                     return GestureDetector(
+                        onTap: () {
+                           setState(() {
+                              final winner = ticTacToe.getWinner();
+                              if (mark.isEmpty && winner.isEmpty) {
+                                 ticTacToe = ticTacToe.placeMark(row, col);
+                              }
+                           });
+                        },
+                        child: Container(
+                           decoration: BoxDecoration(
+                              border: Border.all(color: Colors.grey),
+                           ),
+                           child: Center(
+                              child: Text(
+                                 mark,
+                                 style: const TextStyle(fontSize: 32),
+                              ),
+                           ),
+                        ),
+                     );
+                  },
+               ),
+               //
+               //【新規追加】（ここから）
+               // 盤面との空隙
+               const SizedBox(height: 16),
+               //
+               // ゲーム・リセットボタン
+               SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                     onPressed: () {
+                        setState(() {
+                           ticTacToe = ticTacToe.resetBoard();
+                        });
+                     },
+                     child: const Text('ゲームをリセット'),
+                  ),
+               ),
+               //【新規追加】（ここまで）
+               //
+            ],
+         ),
+      );
+   }
+
+   // 今回の指し手の依頼や、勝利か引き分けかのメッセージを作成
+   String _statusMessage(TicTacToe ticTacToe) {
+      final winner = ticTacToe.getWinner();
+      final isDraw = ticTacToe.isDraw();
+
+      if (winner.isNotEmpty) {
+         return '$winnerの勝ち';
+      } else if (isDraw) {
+         return '引き分けです';
+      } else {
+         return '${ticTacToe.currentPlayer}の番';
+      }
+   }
+}
+```
+<br/>
+
+<ul>
+  ゲーム・リセットボタンの追加（修正全容）<br/>
+  <img src="../images/chapter3/chapter_3_3_4-3.png" alt="ゲーム・リセットボタンの追加（修正全容）" style="max-width:50%;">
+  <!--
+  ![ゲーム・リセットボタンの追加（修正全容）](../images/chapter3/chapter_3_3_4-3.png)
+  -->
+  <br/>
+  <br/>
+</ul>
+<br/>
 
 
 #### 3.3.5: 三目並べのゲーム画面完成（ゲーム盤UI 作成作業完了）
-- [**完成した main パッケージのコード**](https://github.com/FlutterKaigi/tic_tac_toe_handson/blob/release/chapter3/lib/main.dart)
+お疲れさまです、これで三目並べゲームがプレイできるゲーム画面が完成しました。
 
+3章 UI の作成の全コードへのリンクは、以下のとおりです。
+
+- [**完成した main パッケージのコード**](https://github.com/FlutterKaigi/tic_tac_toe_handson/blob/release/chapter3/lib/main.dart)
 - [**完成したゲーム画面(Board)のコード**](https://github.com/FlutterKaigi/tic_tac_toe_handson/blob/release/chapter3/lib/view/board.dart)
+<br/>
+
+<ul>
+  完成した三目並べのゲーム画面<br/>
+  <img src="../images/chapter3/chapter_3_1_1.png" alt="完成した三目並べのゲーム画面" style="max-width:50%;">
+  <!--
+  ![完成した三目並べのゲーム画面](../images/chapter3/chapter_3_1_1.png)
+  -->
+  <br/>
+  <br/>
+</ul>
+<br/>
 
 
 ### 3.4: ゲーム画面についての説明 （ゲーム盤UI 構成説明）
 
+#### 3.4.2: Widgetについての基本資料
+- Widget一覧  
+  - [Widget catalog](https://docs.flutter.dev/ui/widgets)
+  - [Flutter widget index](https://docs.flutter.dev/reference/widgets)
+
+- Widget基礎知識
+   - [Building user interfaces with Flutter](https://docs.flutter.dev/ui)
+
+- 状態管理基礎知識  
+  - [StatefulWidget class](https://api.flutter.dev/flutter/widgets/StatefulWidget-class.html)
+  - [Add interactivity to your Flutter app](https://docs.flutter.dev/ui/interactivity)
+  - [Simple app state management](https://docs.flutter.dev/data-and-backend/state-mgmt/simple)
+
+- Layout基礎知識  
+  - [Basic Flutter layout concepts](https://docs.flutter.dev/codelabs/layout-basics)
+  - [Layouts in Flutter](https://docs.flutter.dev/ui/layout)
+  - [Building layouts](https://docs.flutter.dev/ui/layout/tutorial)
+  - [Understanding constraints](https://docs.flutter.dev/ui/layout/constraints)
+
+<br/>
 
 
 ## コントリビューター
 
 <BaseProfile avatar-url="/staff/rie-kanetaka.png" name="robo" title="既存 iOS/Android ネイティブアプリの Flutter リプレースに携わっています。Flutter の底力を見てください。" twitter-url="https://twitter.com/cch_robo" />
-
-### メモ
-* もう少し細かく区切った方が良さそう
