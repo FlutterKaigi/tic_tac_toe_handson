@@ -10,9 +10,23 @@ flutter pub add flutter_riverpod
 
 `lib`ディレクトリ配下に`provider`ディレクトリを、さらにその配下に`tic_tac_toe_provider.dart`を作成します。
 
+```bash {4-5}
+🗂 lib
+   └ 🗂 model                          : 各種データモデル
+      - 📄 tic_tac_toe.dart            : 三目並べのデータモデル
+   └ 🗂 provider                       : 各種プロバイダー
+      - 📄 tic_tac_toe_provider.dart   : 三目並べのプロバイダー
+   └ 🗂 view                           : 各種ページビュー
+      - 📄 board.dart                  : 三目並べのページビュー
+   - 📄 main.dart                      : アプリケーションのエントリーファイル
+- 📄 pubspec.yaml                      : アプリケーションで使う依存関係の設定
+```
+
+`tic_tac_toe_provider.dart`作成手順は下記の通り進めましょう。
+
 1. プロジェクトの`lib`ディレクトリの中に、新しく`provider`というディレクトリを作成します。
-1. その中に`tic_tac_toe_provider.dart`というファイルを作成します。
-1. 以下のコードをファイルに書き込みます。
+2. その中に`tic_tac_toe_provider.dart`というファイルを作成します。
+3. 以下のコードをファイルに書き込みます。
 
 ```dart
 // lib/provider/tic_tac_toe_provider.dart
