@@ -378,7 +378,7 @@ class _BoardState extends State<Board> {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(                //【差替】子ウィジェットの周りに空隙を指定します。
+    return Padding(                      //【差替】子ウィジェットの周りに空隙を指定します。
       padding: EdgeInsets.all(16),       //【差替】子ウィジェットの四方周りに 16pixelの空隙を指定。
       child: Column(                     //【差替】列方向(縦並び)のコンテンツウィジェット表示を指定します。
         children: [                      //【差替】列方向表示コンテンツウィジェットのリスト
@@ -583,7 +583,7 @@ _具体的なコードは、（修正後）ゲーム画面のコードを参照�
                     }                                            //【新規追加】
                   });                                            //【新規追加】
                 },                                               //【新規追加】
-                child: Container(
+                child: Container(                                //【差替】
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.grey),
                   ),
@@ -593,8 +593,8 @@ _具体的なコードは、（修正後）ゲーム画面のコードを参照�
                       style: const TextStyle(fontSize: 32),
                     ),
                   ),
-                ),
-              );                                                　//【新規追加】
+                ),                                                //【差替】    Container
+              );                                                  //【新規追加】 GestureDetector
               //【修正】新規追加した GestureDetectorの childで、Containerをラップ（ここまで）
             },
             〜 省略 〜
@@ -762,8 +762,8 @@ _具体的なコードは、（修正後）ゲーム画面のコードを参照�
               style: Theme.of(context).textTheme.headlineSmall,
             ),
           ),
-          //【新規追加（ここまで）
           //
+          //【新規追加（ここまで）
           〜 省略 〜
 ```
 <br/>
@@ -930,8 +930,8 @@ _具体的なコードは、（修正後）ゲーム画面のコードを参照�
               child: const Text('ゲームをリセット'),
             ),
           ),
-          //【新規追加】（ここまで）
           //
+          //【新規追加】（ここまで）
           ],
         ),
         〜 省略 〜
