@@ -378,7 +378,7 @@ class _BoardState extends State<Board> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(                      //【差替】子ウィジェットの周りに空隙を指定します。
+    return const Padding(                //【差替】子ウィジェットの周りに空隙を指定します。
       padding: const EdgeInsets.all(16), //【差替】子ウィジェットの四方周りに 16pixelの空隙を指定。
       child: Column(                     //【差替】列方向(縦並び)のコンテンツウィジェット表示を指定します。
         children: [                      //【差替】列方向表示コンテンツウィジェットのリスト
