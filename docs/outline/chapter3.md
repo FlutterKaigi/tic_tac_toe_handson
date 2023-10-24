@@ -586,9 +586,9 @@ _具体的なコードは、（修正後）ゲーム画面のコードを参照�
                   });
                 },
                 //【新規追加】GestureDetector を新規追加（ここまで）
-                //【差替】Container が GestureDetector にラップされるよう child に差し替え（ここから）
+                //【差替】Container が GestureDetector にラップされるよう child にする（ここから）
                 child: Container(
-                //【差替】Container が GestureDetector にラップされるよう child に差し替え（ここまで）
+                //【差替】Container が GestureDetector にラップされるよう child にする（ここまで）
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.grey),
                   ),
@@ -598,9 +598,12 @@ _具体的なコードは、（修正後）ゲーム画面のコードを参照�
                       style: const TextStyle(fontSize: 32),
                     ),
                   ),
-                ),                                                //【差替】    Container
-              );                                                  //【新規追加】 GestureDetector
-              //【修正】新規追加した GestureDetectorの childで、Containerをラップ（ここまで）
+                //【差替】Container が GestureDetector にラップされるよう child にする（ここから）
+                ),
+                //【差替】Container が GestureDetector にラップされるよう child にする（ここまで）
+              //【新規追加】GestureDetector を新規追加（ここから）
+              );
+              //【新規追加】GestureDetector を新規追加（ここまで）
             },
             〜 省略 〜
 ```
