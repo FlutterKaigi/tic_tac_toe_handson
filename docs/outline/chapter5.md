@@ -111,35 +111,35 @@ iOSフォルダをXcodeで開いたのちに、Runnerに[GitHub Discussions](htt
 [freezed](https://pub.dev/packages/freezed) を使用することで、jsonコンバートはコマンド１発で作成可能ですが、ここでは自作してみましょう。
 
 ```dart
-  factory TicTacToe.fromJson(Map<String, dynamic> json) {
-    final flatBoard = List<String>.from(json['board']);
+factory TicTacToe.fromJson(Map<String, dynamic> json) {
+  final flatBoard = List<String>.from(json['board']);
 
-    return TicTacToe(
-      // Firestore側を1次元配列にしているので、モデルの2次元配列とここで合わせる
-      [
-        List<String>.from(flatBoard.sublist(0, 3)),
-        List<String>.from(flatBoard.sublist(3, 6)),
-        List<String>.from(flatBoard.sublist(6, 9)),
-      ],
-      Players(
-        playerX: json['players']['playerX'],
-        playerO: json['players']['playerO'],
-      ),
-      json['currentPlayer'],
-    );
-  }
+  return TicTacToe(
+    // Firestore側を1次元配列にしているので、モデルの2次元配列とここで合わせる
+    [
+      List<String>.from(flatBoard.sublist(0, 3)),
+      List<String>.from(flatBoard.sublist(3, 6)),
+      List<String>.from(flatBoard.sublist(6, 9)),
+    ],
+    Players(
+      playerX: json['players']['playerX'],
+      playerO: json['players']['playerO'],
+    ),
+    json['currentPlayer'],
+  );
+}
 
-  Map<String, dynamic> toJson() {
-    return {
-      // モデルが2次元配列なので、Firestore側の1次元配列にここで合わせる
-      'board': [...board[0], ...board[1], ...board[2]],
-      'players': {
-        'playerX': players.playerX,
-        'playerO': players.playerO,
-      },
-      'currentPlayer': currentPlayer,
-    };
-  }
+Map<String, dynamic> toJson() {
+  return {
+    // モデルが2次元配列なので、Firestore側の1次元配列にここで合わせる
+    'board': [...board[0], ...board[1], ...board[2]],
+    'players': {
+      'playerX': players.playerX,
+      'playerO': players.playerO,
+    },
+    'currentPlayer': currentPlayer,
+  };
+}
 ```
 
 ## リポジトリを作成する
@@ -178,24 +178,24 @@ final class TicTacToeRepository {
 リポジトリのクラスにFirestoreからデータを取得するメソッドを記載しましょう。
 
 ```dart
-  /// 盤面のデータを取得する
-  Stream<TicTacToe> get({
-    String playerX = 'X',
-    String playerO = 'O',
-  }) {
-    // ドキュメント名に変換する
-    final documentKey = _documentKey(playerX, playerO);
-    // スナップショットを取得し、モデルへ変換する
-    // データがない場合、モデルの初期状態を返す
-    return _colRef().doc(documentKey).snapshots().map(
-          (e) =>
-              e.data() ??
-              TicTacToe.start(
-                playerX: playerX,
-                playerO: playerO,
-              ),
-        );
-  }
+/// 盤面のデータを取得する
+Stream<TicTacToe> get({
+  String playerX = 'X',
+  String playerO = 'O',
+}) {
+  // ドキュメント名に変換する
+  final documentKey = _documentKey(playerX, playerO);
+  // スナップショットを取得し、モデルへ変換する
+  // データがない場合、モデルの初期状態を返す
+  return _colRef().doc(documentKey).snapshots().map(
+        (e) =>
+            e.data() ??
+            TicTacToe.start(
+              playerX: playerX,
+              playerO: playerO,
+            ),
+      );
+}
 ```
 
 ### 2. updateメソッドを追加する
@@ -203,14 +203,14 @@ final class TicTacToeRepository {
 リポジトリのクラスにFirestoreへデータを保存するメソッドを記載しましょう。
 
 ```dart
-  /// 盤面のデータを更新する
-  Future<void> update(TicTacToe ticTacToe) async {
-    // ドキュメント名に変換する
-    final documentKey =
-        _documentKey(ticTacToe.players.playerX, ticTacToe.players.playerO);
-    // モデルをjsonに変換し、firestoreへ保存する
-    await _colRef().doc(documentKey).set(ticTacToe);
-  }
+/// 盤面のデータを更新する
+Future<void> update(TicTacToe ticTacToe) async {
+  // ドキュメント名に変換する
+  final documentKey =
+      _documentKey(ticTacToe.players.playerX, ticTacToe.players.playerO);
+  // モデルをjsonに変換し、firestoreへ保存する
+  await _colRef().doc(documentKey).set(ticTacToe);
+}
 ```
 
 ### 3. リポジトリをProvider化する
@@ -297,22 +297,22 @@ import 'package:tic_tac_toe_handson/provider/update_tic_tac_toe_provider.dart';
 次に使用するProviderを変更しましょう。
 
 ```dart
-    // final ticTacToe = ref.watch(ticTacToeProvider);
-    final ticTacToeStream = ref.watch(getTicTacToeProvider);
+// final ticTacToe = ref.watch(ticTacToeProvider);
+final ticTacToeStream = ref.watch(getTicTacToeProvider);
 ```
 
 今、returnしているPaddingを以下のコードで囲みます。
 
 ```dart
-    return ticTacToeStream.when(
-      loading: () => const Center(child: CircularProgressIndicator()),
-      error: (error, __) => Center(child: Text('エラーが発生しました: ${error.toString()}')),
-      data: (ticTacToe) {
-        return Padding(
-        // 略
-        );
-      },
+return ticTacToeStream.when(
+  loading: () => const Center(child: CircularProgressIndicator()),
+  error: (error, __) => Center(child: Text('エラーが発生しました: ${error.toString()}')),
+  data: (ticTacToe) {
+    return Padding(
+    // 略
     );
+  },
+);
 ```
 
 Riverpodを使用すると `AsyncValue` を返却するProviderでは、このように `when` を使用することが可能です。
