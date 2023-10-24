@@ -378,7 +378,7 @@ class _BoardState extends State<Board> {
 
   @override
   Widget build(BuildContext context) {
-    //【差替】child コンテンツを列方向(縦並び)に配置する Column を Padding でラップ（ここから）
+    //【差替】コンテンツを列方向(縦並び)に配置する Column を Padding でラップ（ここから）
     return Padding(
       padding: EdgeInsets.all(16),
       child: Column(
@@ -386,7 +386,7 @@ class _BoardState extends State<Board> {
         ],
       ),
     );
-    //【差替】child コンテンツを列方向(縦並び)に配置する Column を Padding でラップ（ここまで）
+    //【差替】コンテンツを列方向(縦並び)に配置する Column を Padding でラップ（ここまで）
   }
 }
 ```
