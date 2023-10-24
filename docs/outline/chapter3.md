@@ -13,9 +13,9 @@
 
 <ul>
   UI完成図<br/>
-  <img src="../images/chapter3/chapter_3_1_1.png" alt="完成図" style="max-width:40%;">
+  <img src="../public/chapter3/chapter_3_1_1.png" alt="完成図" style="max-width:40%;">
   <!--
-  ![完成図](../images/chapter3/chapter_3_1_1.png)
+  ![完成図](../public/chapter3/chapter_3_1_1.png)
   -->
 </ul>
 
@@ -88,18 +88,18 @@ class TicTacToe {
    <br/>
    <ul>
      <a href="https://github.com/FlutterKaigi/tic_tac_toe_handson/blob/release/chapter2/lib/main.dart">修正前 main パッケージ</a><br/>
-     <img src="../images/chapter3/chapter_3_2_0.png" alt="修正前 main パッケージ" style="max-width:40%;">
+     <img src="../public/chapter3/chapter_3_2_0.png" alt="修正前 main パッケージ" style="max-width:40%;">
      <!--
-     ![修正前 main パッケージ](../images/chapter3/chapter_3_2_0.png)
+     ![修正前 main パッケージ](../public/chapter3/chapter_3_2_0.png)
      -->
      <br/>
      <br/>
    </ul>
    <ul>
      main パッケージの修正<br/>
-     <img src="../images/chapter3/chapter_3_2_1.png" alt="main パッケージの修正" style="max-width:40%;">
+     <img src="../public/chapter3/chapter_3_2_1.png" alt="main パッケージの修正" style="max-width:40%;">
      <!--
-     ![main パッケージの修正](../images/chapter3/chapter_3_3_1.png)
+     ![main パッケージの修正](../public/chapter3/chapter_3_3_1.png)
      -->
      <br/>
      <br/>
@@ -112,9 +112,9 @@ class TicTacToe {
    <br/>
    <ul>
      三目並べ盤面の追加<br/>
-     <img src="../images/chapter3/chapter_3_2_2.png" alt="三目並べ盤面の追加" style="max-width:40%;">
+     <img src="../public/chapter3/chapter_3_2_2.png" alt="三目並べ盤面の追加" style="max-width:40%;">
      <!--
-     ![三目並べ盤面の追加](../images/chapter3/chapter_3_2_2.png)
+     ![三目並べ盤面の追加](../public/chapter3/chapter_3_2_2.png)
      -->
      <br/>
      <br/>
@@ -126,9 +126,9 @@ class TicTacToe {
    <br/>
    <ul>
      メッセージ表示欄の追加<br/>
-     <img src="../images/chapter3/chapter_3_2_3.png" alt="メッセージ表示欄の追加" style="max-width:40%;">
+     <img src="../public/chapter3/chapter_3_2_3.png" alt="メッセージ表示欄の追加" style="max-width:40%;">
      <!--
-     ![メッセージ表示欄の追加](../images/chapter3/chapter_3_2_3.png)
+     ![メッセージ表示欄の追加](../public/chapter3/chapter_3_2_3.png)
      -->
      <br/>
      <br/>
@@ -140,9 +140,9 @@ class TicTacToe {
    <br/>
    <ul>
      ゲーム・リセットボタンの追加<br/>
-     <img src="../images/chapter3/chapter_3_2_4.png" alt="ゲーム・リセットボタンの追加" style="max-width:40%;">
+     <img src="../public/chapter3/chapter_3_2_4.png" alt="ゲーム・リセットボタンの追加" style="max-width:40%;">
      <!--
-     ![ゲーム・リセットボタンの追加](../images/chapter3/chapter_3_2_4.png)
+     ![ゲーム・リセットボタンの追加](../public/chapter3/chapter_3_2_4.png)
      -->
      <br/>
      <br/>
@@ -329,9 +329,9 @@ class MyApp extends StatelessWidget {
 <br/>
 <ul>
   main パッケージ修正後のアプリ画面<br/>
-  <img src="../images/chapter3/chapter_3_3_1ｰ5.png" alt="main パッケージ修正後のアプリ画面" style="max-width:50%;">
+  <img src="../public/chapter3/chapter_3_3_1ｰ5.png" alt="main パッケージ修正後のアプリ画面" style="max-width:50%;">
   <!--
-  ![main パッケージ修正後のアプリ画面](../images/chapter3/chapter_3_3_1ｰ5.png)
+  ![main パッケージ修正後のアプリ画面](../public/chapter3/chapter_3_3_1ｰ5.png)
   -->
   <br/>
   <br/>
@@ -675,9 +675,9 @@ class _BoardState extends State<Board> {
 
 <ul>
   三目並べ盤面の追加（修正全容）<br/>
-  <img src="../images/chapter3/chapter_3_3_2-6.png" alt="三目並べ盤面の追加（修正全容）" style="max-width:50%;">
+  <img src="../public/chapter3/chapter_3_3_2-6.png" alt="三目並べ盤面の追加（修正全容）" style="max-width:50%;">
   <!--
-  ![三目並べ盤面の追加（修正全容）](../images/chapter3/chapter_3_3_2-6.png)
+  ![三目並べ盤面の追加（修正全容）](../public/chapter3/chapter_3_3_2-6.png)
   -->
   <br/>
   <br/>
@@ -872,9 +872,9 @@ class _BoardState extends State<Board> {
 
 <ul>
   メッセージ表示欄の追加（修正全容）<br/>
-  <img src="../images/chapter3/chapter_3_3_3-3.png" alt="メッセージ表示欄の追加（修正全容）" style="max-width:50%;">
+  <img src="../public/chapter3/chapter_3_3_3-3.png" alt="メッセージ表示欄の追加（修正全容）" style="max-width:50%;">
   <!--
-  ![メッセージ表示欄の追加（修正全容）](../images/chapter3/chapter_3_3_3-3.png)
+  ![メッセージ表示欄の追加（修正全容）](../public/chapter3/chapter_3_3_3-3.png)
   -->
   <br/>
   <br/>
@@ -1066,9 +1066,9 @@ class _BoardState extends State<Board> {
 
 <ul>
   ゲーム・リセットボタンの追加（修正全容）<br/>
-  <img src="../images/chapter3/chapter_3_3_4-3.png" alt="ゲーム・リセットボタンの追加（修正全容）" style="max-width:50%;">
+  <img src="../public/chapter3/chapter_3_3_4-3.png" alt="ゲーム・リセットボタンの追加（修正全容）" style="max-width:50%;">
   <!--
-  ![ゲーム・リセットボタンの追加（修正全容）](../images/chapter3/chapter_3_3_4-3.png)
+  ![ゲーム・リセットボタンの追加（修正全容）](../public/chapter3/chapter_3_3_4-3.png)
   -->
   <br/>
   <br/>
@@ -1087,9 +1087,9 @@ class _BoardState extends State<Board> {
 
 <ul>
   完成した三目並べのゲーム画面<br/>
-  <img src="../images/chapter3/chapter_3_1_1.png" alt="完成した三目並べのゲーム画面" style="max-width:50%;">
+  <img src="../public/chapter3/chapter_3_1_1.png" alt="完成した三目並べのゲーム画面" style="max-width:50%;">
   <!--
-  ![完成した三目並べのゲーム画面](../images/chapter3/chapter_3_1_1.png)
+  ![完成した三目並べのゲーム画面](../public/chapter3/chapter_3_1_1.png)
   -->
   <br/>
   <br/>
