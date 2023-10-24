@@ -535,7 +535,7 @@ _具体的なコードは、（修正後）ゲーム画面のコードを参照�
 これはタップされたマス目により、**カレント指し手**が有効であるか ⇒ ○×マーク配置可能か否かを判定し、
 有効であれば**カレント指し手が記録された「新しいゲーム進行状態」に状態遷移する**ことを示します。
 
-タップ・イベントをハンドリングするウィジェット ⇒ タップに対応する任意処理を指定できるウィジェットには、
+タップ・イベントのハンドリング ⇒ タップに対応する任意処理を指定できるウィジェットには、
 **[GestureDetector](https://api.flutter.dev/flutter/widgets/GestureDetector-class.html)** があります。
 
 - [GestureDetector](https://api.flutter.dev/flutter/widgets/GestureDetector-class.html)は、
