@@ -6,14 +6,16 @@
   "scripts": {
     "dev": "vitepress dev docs",
     "build": "vitepress build docs",
-    "preview": "vitepress preview docs"
+    "preview": "vitepress preview docs",
+    "docsformat:fix": "prettier ./docs/outline/*.md --write"
   },
   "dependencies": {
     "vitepress": "^1.0.0-rc.22"
   },
   "devDependencies": {
-    "jsdom": "^22.1.0",
     "@nekohack/markdown-it-link-preview": "^1.0.8",
+    "jsdom": "^22.1.0",
+    "prettier": "3.0.3",
     "typescript": "^5.2.2",
     "xmlhttprequest": "^1.8.0"
   }

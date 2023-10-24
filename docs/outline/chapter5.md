@@ -1,5 +1,7 @@
 ## Firestoreに繋ぐ準備をする
+
 プロジェクトルートで以下のコマンドを実行し、必要なライブラリを取得しましょう。
+
 ```zsh
 flutter pub add firebase_core
 flutter pub add cloud_firestore
@@ -53,6 +55,7 @@ class DefaultFirebaseOptions {
 ```
 
 次に `main.dart` を修正します。
+
 ```dart
 // importを追加
 import 'package:firebase_core/firebase_core.dart';
@@ -71,25 +74,30 @@ void main() async {
 ```
 
 ### 1. Androidでのビルド準備を進める
+
 `android/build.gradle` に以下を追記します。
+
 ```txt
 classpath 'com.google.gms:google-services:4.3.10'
 ```
 
 `android/app/build.gradle` に以下を追記します。
+
 ```txt
 apply plugin: 'com.google.gms.google-services'
 ```
 
 また`defaultConfig`の中に記載がない場合、以下も追記します。
+
 ```txt
 multiDexEnabled true
 ```
 
-[GitHub Discussions](https://github.com/FlutterKaigi/tic_tac_toe_handson/discussions) から  `google-services.json` を取得し、`android/app`に追加します。
+[GitHub Discussions](https://github.com/FlutterKaigi/tic_tac_toe_handson/discussions) から `google-services.json` を取得し、`android/app`に追加します。
 
 ### 2. iOSでのビルド準備を進める
-iOSフォルダをXcodeで開いたのちに、Runnerに[GitHub Discussions](https://github.com/FlutterKaigi/tic_tac_toe_handson/discussions) で取得した  `GoogleService-Info.plist` を追加します。  
+
+iOSフォルダをXcodeで開いたのちに、Runnerに[GitHub Discussions](https://github.com/FlutterKaigi/tic_tac_toe_handson/discussions) で取得した `GoogleService-Info.plist` を追加します。  
 このとき、「Copy items if needed」にチェックを入れて追加してください。
 
 ![Alt text](../public/chapter5/add_plist.png)
@@ -98,10 +106,11 @@ iOSフォルダをXcodeで開いたのちに、Runnerに[GitHub Discussions](htt
 ハンズオン用に手動でしましたが、[FlutterFire](https://firebase.flutter.dev/)を使用することでコマンドで簡単にできます。
 
 ## modelにjsonコンバートメソッドを追加する
+
 `lib/model/tic_tac_toe.json` の`TicTacToe`クラス内に以下を追加します。  
 [freezed](https://pub.dev/packages/freezed) を使用することで、jsonコンバートはコマンド１発で作成可能ですが、ここでは自作してみましょう。
 
-``` dart
+```dart
   factory TicTacToe.fromJson(Map<String, dynamic> json) {
     final flatBoard = List<String>.from(json['board']);
 
@@ -134,10 +143,12 @@ iOSフォルダをXcodeで開いたのちに、Runnerに[GitHub Discussions](htt
 ```
 
 ## リポジトリを作成する
+
 まずは、新しいファイルを作りましょう。
-`lib/repository/tic_tac_toe_repository.dart` 
+`lib/repository/tic_tac_toe_repository.dart`
 
 続いて、クラスを作成します。
+
 ```dart
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:tic_tac_toe_handson/model/tic_tac_toe.dart';
@@ -163,7 +174,9 @@ final class TicTacToeRepository {
 ```
 
 ### 1. getメソッドを追加する
+
 リポジトリのクラスにFirestoreからデータを取得するメソッドを記載しましょう。
+
 ```dart
   /// 盤面のデータを取得する
   Stream<TicTacToe> get({
@@ -186,7 +199,9 @@ final class TicTacToeRepository {
 ```
 
 ### 2. updateメソッドを追加する
+
 リポジトリのクラスにFirestoreへデータを保存するメソッドを記載しましょう。
+
 ```dart
   /// 盤面のデータを更新する
   Future<void> update(TicTacToe ticTacToe) async {
@@ -199,8 +214,10 @@ final class TicTacToeRepository {
 ```
 
 ### 3. リポジトリをProvider化する
+
 リポジトリのファイルに以下を追加します。  
 この後、getとupdateをそれぞれProvider化する際に使用します。
+
 ```dart
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -210,10 +227,12 @@ final ticTacToeRepositoryProvider = AutoDisposeProvider<TicTacToeRepository>(
 ```
 
 ## データを取得するProviderを作成する
+
 新しいファイルを作りましょう。  
-`lib/provider/get_tic_tac_toe_provider.dart` 
+`lib/provider/get_tic_tac_toe_provider.dart`
 
 以下を記載してください。
+
 ```dart
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tic_tac_toe_handson/model/tic_tac_toe.dart';
@@ -231,16 +250,18 @@ final getTicTacToeProvider = AutoDisposeStreamProvider<TicTacToe>(
 ```
 
 `ticTacToeRepositoryProvider` を使用しています。  
-RiverpodではこのようにProviderの中で別のProviderを組み合わせることが可能です。  
+RiverpodではこのようにProviderの中で別のProviderを組み合わせることが可能です。
 
 FirestoreはWebSocketが基盤になっているため、リアルタイムでデータを送受信することが可能です。  
 その利点を活かして、今回は`Stream`でデータを取得するようにします。
 
 ## データを保存するProviderを作成する
+
 新しいファイルを作りましょう。  
-`lib/provider/update_tic_tac_toe_provider.dart` 
+`lib/provider/update_tic_tac_toe_provider.dart`
 
 以下を記載してください。
+
 ```dart
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tic_tac_toe_handson/model/tic_tac_toe.dart';
@@ -262,6 +283,7 @@ final updateTicTacToeProvider =
 色々な種類のProviderを使用したいという思いがあり、ハンズオンではこの形式にしました。
 
 ## 作成したProviderをWidgetで使用する
+
 getとupdateをそれぞれProviderにしたため、そちらをWidgetで使用しましょう。
 `lib/view/board.dart` を修正します。
 
@@ -297,11 +319,12 @@ Riverpodを使用すると `AsyncValue` を返却するProviderでは、この�
 
 `loading` はデータがローディングの際に実施したい処理とWidgetを記載します。  
 `error` はデータがエラーの際に実施したい処理とWidgetを記載します。  
-`data` はデータが取得できた際に実施したい処理とWidgetを記載します。  
+`data` はデータが取得できた際に実施したい処理とWidgetを記載します。
 
 このように非同期処理の内容をWidgetで簡単に取り扱うことが可能です。
 
 では、最後にupdate用のProviderもそれぞれ変更しましょう。
+
 ```dart
 // ref.read(ticTacToeProvider.notifier).state = ticTacToe.placeMark(row, col);
 ref.read(updateTicTacToeProvider(ticTacToe.placeMark(row, col)),);
@@ -315,12 +338,14 @@ ref.read(updateTicTacToeProvider(ticTacToe.resetBoard()),);
 これで準備は完了です！
 
 ## リアルタイムでデームをプレイする
+
 [GithubDiscussions](https://github.com/FlutterKaigi/tic_tac_toe_handson/discussions) に対戦相手募集中のスレッドを用意しております。
 
 対戦を待つ場合は、そちらに自身のプレイヤー名を記載してください。  
-対戦を申し込む場合は、返信形式でプレイヤー名を記載してください。  
+対戦を申し込む場合は、返信形式でプレイヤー名を記載してください。
 
 対戦相手が決まったら、`get_tic_tac_toe_provider.dart` を以下のように修正してください。
+
 ```dart
 final getTicTacToeProvider = AutoDisposeStreamProvider<TicTacToe>(
   (ref) =>
@@ -334,6 +359,7 @@ final getTicTacToeProvider = AutoDisposeStreamProvider<TicTacToe>(
 それでは遊んでみてください。
 
 iOSでビルドした際に、Podfileに以下のコマンドが記載されている場合、コメントアウトすることで実行できます。
+
 ```txt
 #   target 'RunnerTests' do
 #     inherit! :search_paths
