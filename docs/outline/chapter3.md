@@ -378,13 +378,15 @@ class _BoardState extends State<Board> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(                      //【差替】子ウィジェットの周りに空隙を指定します。
-      padding: EdgeInsets.all(16),       //【差替】子ウィジェットの四方周りに 16pixelの空隙を指定。
-      child: Column(                     //【差替】列方向(縦並び)のコンテンツウィジェット表示を指定します。
-        children: [                      //【差替】列方向表示コンテンツウィジェットのリスト
-        ],                               //【差替】（現時点では、ヘッダやボディなどの表示コンテンツはありません）
-      ),                                 //【差替】
-    );                                   //【差替】
+    //【差替】child コンテンツを列方向(縦並び)に配置する Column を Padding でラップ（ここから）
+    return Padding(
+      padding: EdgeInsets.all(16),
+      child: Column(
+        children: [
+        ],
+      ),
+    );
+    //【差替】child コンテンツを列方向(縦並び)に配置する Column を Padding でラップ（ここまで）
   }
 }
 ```
@@ -573,17 +575,20 @@ _具体的なコードは、（修正後）ゲーム画面のコードを参照�
               final col = index % 3;
               final mark = ticTacToe.board[row][col];
 
-              //【修正】新規追加した GestureDetectorの childで、Containerをラップ（ここから）
-              return GestureDetector(                            //【新規追加】
-                onTap: () {                                      //【新規追加】
-                  setState(() {                                  //【新規追加】
-                    final winner = ticTacToe.getWinner();        //【新規追加】
-                    if (mark.isEmpty && winner.isEmpty) {        //【新規追加】
-                      ticTacToe = ticTacToe.placeMark(row, col); //【新規追加】
-                    }                                            //【新規追加】
-                  });                                            //【新規追加】
-                },                                               //【新規追加】
-                child: Container(                                //【差替】
+              //【新規追加】GestureDetector を新規追加（ここから）
+              return GestureDetector(
+                onTap: () {
+                  setState(() {
+                    final winner = ticTacToe.getWinner();
+                    if (mark.isEmpty && winner.isEmpty) {
+                      ticTacToe = ticTacToe.placeMark(row, col);
+                    }
+                  });
+                },
+                //【新規追加】GestureDetector を新規追加（ここまで）
+                //【差替】Container が GestureDetector にラップされるよう child に差し替え（ここから）
+                child: Container(
+                //【差替】Container が GestureDetector にラップされるよう child に差し替え（ここまで）
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.grey),
                   ),
