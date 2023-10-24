@@ -59,3 +59,7 @@ class MyApp extends ConsumerWidget {
 }
 
 ```
+
+## コントリビューター
+
+<BaseProfile avatar-url="/staff/daichi-aoki.png" name="ちっぴー" title="FlutterとFirebaseをよく扱っており、Riverpodは重宝しております！ハンズオンを通して学びを一緒に深めていきましょう👾" twitter-url="https://twitter.com/chippy_ao" />

@@ -120,3 +120,7 @@ ElevatedButton(
 ```
 
 これで状態の管理と盤面のUI更新をRiverpodを使って行うことができるようになりました。
+
+## コントリビューター
+
+<BaseProfile avatar-url="/staff/okaryo.png" name="okaryo" title="現在は主にRubyやGoを仕事で扱っていますが、今もFlutterは大好きです！" twitter-url="https://twitter.com/okaryoX" />
