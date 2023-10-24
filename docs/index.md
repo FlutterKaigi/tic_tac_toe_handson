@@ -38,7 +38,7 @@ Flutter 開発における状態管理の手法として注目を集めている
 
 <BaseProfile avatar-url="/staff/rie-kanetaka.png" name="robo" title="既存 iOS/Android ネイティブアプリの Flutter リプレースに携わっております。Flutter の底力を見てくださいね。" twitter-url="https://twitter.com/cch_robo" />
 
-<BaseProfile avatar-url="/staff/yuma-kitamura.png" name="jiyuujin" title="少し前に副業で Flutter + Provider を使ったアプリ開発で経験させてもらいつつ、一昨年・昨年は FlutterKaigi ウェブサイトのコントビュート・リードもさせていただいておりました。" sns-url="https://twitter.com/jiyuujinlab" />
+<BaseProfile avatar-url="/staff/yuma-kitamura.png" name="jiyuujin" title="少し前に副業で Flutter + Provider を使ったアプリ開発で経験させてもらいつつ、一昨年・昨年は FlutterKaigi ウェブサイトのコントビュート・リードもさせていただいておりました。" twitter-url="https://twitter.com/jiyuujinlab" />
 
 皆さま、コントリビュートいただきありがとうございます。
 
