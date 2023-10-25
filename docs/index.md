@@ -14,11 +14,11 @@ Flutter 開発における状態管理の手法として注目を集めている
 
 ### 進め方
 
-ハンズオンは YouTube によるリアルタイム配信が行われます。当日までに [connpass](https://flutterkaigi.connpass.com/event/293847/)に YouTube のリンクを掲載しますので、そちらよりご参加ください。
+ハンズオンの配信はYouTubeにて、質疑応答は[GitHubDiscussions](https://github.com/FlutterKaigi/tic_tac_toe_handson/discussions)を使って進めていきます。ハンズオン内で気になることがあった方はお気軽にDiscussionsを作成してください。
 
 また、後日アーカイヴ化される予定 (リアルタイム配信同様の URL として公開される予定) です。忘れずに [FlutterKaigi 公式 YouTube チャンネル](https://www.youtube.com/channel/UC1JP6dPBmmccZto4LNz9KMw) の登録をぽちっとしていただければ幸いです！
 
-## ハンズオンの内容 (予定)
+## ハンズオンの内容
 
 ハンズオンは以下の流れで進めていきます。
 
