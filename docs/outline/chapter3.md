@@ -1132,7 +1132,7 @@ class _BoardState extends State<Board> {
 ## 3.4: UI 作成資料室
 UI作成関連の Flutter 公式資料です。
 
-### 3.1.2: Widgetについての基本資料
+### 3.1.1: Widgetについての基本資料
 
 - Widget一覧
 
