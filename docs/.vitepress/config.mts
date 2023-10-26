@@ -161,23 +161,23 @@ export default defineConfig({
         text: `Outline`,
         items: [
           {
-            text: `Riverpod の紹介`,
+            text: `1. Riverpod の紹介`,
             link: `/outline/chapter1.md`
           },
           {
-            text: `アプリケーションの基本構造とゲームロジック`,
+            text: `2. アプリケーションの基本構造とゲームロジック`,
             link: `/outline/chapter2.md`
           },
           {
-            text: `UI の作成`,
+            text: `3. UI の作成`,
             link: `/outline/chapter3.md`
           },
           {
-            text: `Riverpod の導入`,
+            text: `4. Riverpod の導入`,
             link: `/outline/chapter4.md`
           },
           {
-            text: `Firestore を用いたリアルタイム対戦機能 (チャレンジ企画)`,
+            text: `5. Firestore を用いたリアルタイム対戦機能 (チャレンジ企画)`,
             link: `/outline/chapter5.md`
           }
         ]

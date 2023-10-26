@@ -7,7 +7,7 @@
     "dev": "vitepress dev docs",
     "build": "vitepress build docs",
     "preview": "vitepress preview docs",
-    "docsformat:fix": "prettier ./docs/outline/*.md --write"
+    "docsformat:fix": "prettier ./docs/**/*.md --write"
   },
   "dependencies": {
     "vitepress": "^1.0.0-rc.22"

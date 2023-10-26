@@ -1,4 +1,8 @@
-## Firestoreに繋ぐ準備をする
+# 5. Firestore を用いたリアルタイム対戦機能
+
+チャレンジ企画です。
+
+## 5-1. Firestoreに繋ぐ準備をする
 
 プロジェクトルートで以下のコマンドを実行し、必要なライブラリを取得しましょう。
 
@@ -73,7 +77,9 @@ void main() async {
 }
 ```
 
-### 1. Androidでのビルド準備を進める
+## 5-2. ビルド準備を進める
+
+### 5-2-1. Androidでのビルド準備を進める
 
 `android/build.gradle` に以下を追記します。
 
@@ -95,7 +101,7 @@ multiDexEnabled true
 
 [GitHub Discussions](https://github.com/FlutterKaigi/tic_tac_toe_handson/discussions) から `google-services.json` を取得し、`android/app`に追加します。
 
-### 2. iOSでのビルド準備を進める
+### 5-2-2. iOSでのビルド準備を進める
 
 iOSフォルダをXcodeで開いたのちに、Runnerに[GitHub Discussions](https://github.com/FlutterKaigi/tic_tac_toe_handson/discussions) で取得した `GoogleService-Info.plist` を追加します。  
 このとき、「Copy items if needed」にチェックを入れて追加してください。
@@ -105,7 +111,9 @@ iOSフォルダをXcodeで開いたのちに、Runnerに[GitHub Discussions](htt
 これで基本的な準備は完了！  
 ハンズオン用に手動でしましたが、[FlutterFire](https://firebase.flutter.dev/)を使用することでコマンドで簡単にできます。
 
-## modelにjsonコンバートメソッドを追加する
+## 5-3. 実装を進める
+
+### 5-3-1. modelにjsonコンバートメソッドを追加する
 
 `lib/model/tic_tac_toe.json` の`TicTacToe`クラス内に以下を追加します。  
 [freezed](https://pub.dev/packages/freezed) を使用することで、jsonコンバートはコマンド１発で作成可能ですが、ここでは自作してみましょう。
@@ -142,7 +150,7 @@ Map<String, dynamic> toJson() {
 }
 ```
 
-## リポジトリを作成する
+### 5-3-2. クラスを作成する
 
 まずは、新しいファイルを作りましょう。
 `lib/repository/tic_tac_toe_repository.dart`
@@ -173,7 +181,7 @@ final class TicTacToeRepository {
 }
 ```
 
-### 1. getメソッドを追加する
+### 5-3-3. getメソッドを追加する
 
 リポジトリのクラスにFirestoreからデータを取得するメソッドを記載しましょう。
 
@@ -198,7 +206,7 @@ Stream<TicTacToe> get({
 }
 ```
 
-### 2. updateメソッドを追加する
+### 5-3-4. updateメソッドを追加する
 
 リポジトリのクラスにFirestoreへデータを保存するメソッドを記載しましょう。
 
@@ -213,7 +221,7 @@ Future<void> update(TicTacToe ticTacToe) async {
 }
 ```
 
-### 3. リポジトリをProvider化する
+### 5-3-5. リポジトリをProvider化する
 
 リポジトリのファイルに以下を追加します。  
 この後、getとupdateをそれぞれProvider化する際に使用します。
@@ -226,7 +234,7 @@ final ticTacToeRepositoryProvider = AutoDisposeProvider<TicTacToeRepository>(
 );
 ```
 
-## データを取得するProviderを作成する
+### 5-3-6. データを取得するProviderを作成する
 
 新しいファイルを作りましょう。  
 `lib/provider/get_tic_tac_toe_provider.dart`
@@ -255,7 +263,7 @@ RiverpodではこのようにProviderの中で別のProviderを組み合わせ�
 FirestoreはWebSocketが基盤になっているため、リアルタイムでデータを送受信することが可能です。  
 その利点を活かして、今回は`Stream`でデータを取得するようにします。
 
-## データを保存するProviderを作成する
+### 5-3-7. データを保存するProviderを作成する
 
 新しいファイルを作りましょう。  
 `lib/provider/update_tic_tac_toe_provider.dart`
@@ -282,7 +290,7 @@ final updateTicTacToeProvider =
 余談ですが、今回の場合は `AsyncNotifier` を使用することもできます。  
 色々な種類のProviderを使用したいという思いがあり、ハンズオンではこの形式にしました。
 
-## 作成したProviderをWidgetで使用する
+### 5-3-8. 作成したProviderをWidgetで使用する
 
 getとupdateをそれぞれProviderにしたため、そちらをWidgetで使用しましょう。
 `lib/view/board.dart` を修正します。
@@ -337,7 +345,7 @@ ref.read(updateTicTacToeProvider(ticTacToe.resetBoard()),);
 
 これで準備は完了です！
 
-## リアルタイムでデームをプレイする
+## 5-4. リアルタイムでデームをプレイする
 
 [GithubDiscussions](https://github.com/FlutterKaigi/tic_tac_toe_handson/discussions) に対戦相手募集中のスレッドを用意しております。
 

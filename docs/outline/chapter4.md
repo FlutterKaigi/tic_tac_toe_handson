@@ -1,4 +1,6 @@
-# Riverpod の導入
+# 4. Riverpod の導入
+
+## 4.1 Riverpodのインストール
 
 まずは`flutter_riverpod` をプロジェクトに追加します。
 
@@ -6,7 +8,7 @@
 flutter pub add flutter_riverpod
 ```
 
-## 4.1 Provider の作成
+## 4.2 Provider の作成
 
 まず、盤面の状態を管理するためのProviderを作成します。
 
@@ -48,11 +50,11 @@ final ticTacToeProvider = StateProvider<TicTacToe>((ref) {
 StateProvider.autoDispose
 ```
 
-## 4.2 状態変化に応じて UI を更新する
+## 4.3 状態変化に応じて UI を更新する
 
 次にUIに関するコードを変更していきます。
 
-### 4.2.1 `main.dart`の更新
+### 4.3.1 `main.dart`の更新
 
 Riverpodをアプリケーション内で利用するには、`ProviderScope`でラップする必要があります。
 Widget内でProviderの値を読み取れるようにしておくためには、アプリケーション全体を`ProviderScope`でラップする必要があります。
@@ -68,7 +70,7 @@ void main() {
 }
 ```
 
-### 4.2.2 `view/board.dart`の更新
+### 4.3.2 `view/board.dart`の更新
 
 Widget内で`provider`にアクセスするには`ConsumerWidget`を継承します。
 
@@ -90,7 +92,7 @@ class Board extends ConsumerWidget {
 
 `ref`には`ref.watch`と`ref.read`の2種類の主な使い方があります。`ref.watch`はproviderの状態が変わるたびに再描画が走りますが、`ref.read`はその時の値を一度だけ読み取るだけです。
 
-### 4.2.3 状態の更新方法
+### 4.3.3 状態の更新方法
 
 最後に状態の更新処理を変更していきます。`ref.read(ticTacToeProvider.notifier).state`でproviderの状態にアクセスし、それに対して値を代入することで状態を更新しています。
 

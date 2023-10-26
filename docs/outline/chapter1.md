@@ -1,11 +1,11 @@
-## Riverpodとは
+## 1. Riverpodとは
 
 RiverpodはDart/Flutterで使用できる状態管理ライブラリです。
 [Remi Rousselet](https://github.com/rrousselGit) 氏によって作成されており、Riverpodの他に「freezed」「flutter_hooks」なども作成されております。
 「Provider」についても同氏が作成している状態管理ライブラリですが、公式FAQにおいても「多分、Providerは非推奨にする予定で、Riverpodへの移行ツールも計画している」とのことで、作者自身もRiverpodの使用を推奨しております。
 ちなみにRiverpodはProviderのアナグラムです。
 
-## Riverpodのメリット
+## 1.1: Riverpodのメリット
 
 Flutterの状態管理手法はStatefulWidgetPatternをはじめ、様々あります。
 その中でRiverpodを使用するメリットは以下が挙げられると考えております。
@@ -18,7 +18,7 @@ Flutterの状態管理手法はStatefulWidgetPatternをはじめ、様々あり�
 - DIもしやすく、テストの容易性の向上に繋がる（Override）
 - Flutter Favoriteである
 
-## Riverpodの使い方
+## 1.2: Riverpodの使い方
 
 以下は公式ドキュメントのサンプルからriverpod_generatorを使用しない形式に修正したものです。
 
