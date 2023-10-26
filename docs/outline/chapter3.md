@@ -312,6 +312,10 @@ _【注意】現状のゲーム画面(`Board`)は、何も表示するものが�
 import 'package:flutter/material.dart';
 import 'package:tic_tac_toe_handson/view/board.dart';
 
+void main() {
+  runApp(const MyApp());
+}
+
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
