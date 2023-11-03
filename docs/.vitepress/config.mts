@@ -151,6 +151,7 @@ export default defineConfig({
       {
         text: `Past Kaigis`,
         items: [
+          { text: `FlutterKaigi 2023`, link: `https://tic-tac-toe-handson.pages.dev/` },
           { text: `FlutterKaigi 2022`, link: `https://flutterkaigi-2022-workshop.netlify.app/` },
           { text: `FlutterKaigi 2021`, link: `https://flutterkaigi-2021-workshop.netlify.app/` }
         ]
