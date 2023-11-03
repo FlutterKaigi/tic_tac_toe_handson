@@ -59,7 +59,7 @@ export default defineConfig({
       {
         hid: `og:image`,
         name: `og:image`,
-        content: `https://flutterkaigi-2023-workshop.netlify.app/top.png`
+        content: `https://tic-tac-toe-handson.pages.dev/top.png`
       }
     ],
     [
@@ -115,7 +115,7 @@ export default defineConfig({
       {
         hid: `twitter:image`,
         name: `twitter:image`,
-        content: `https://flutterkaigi-2023-workshop.netlify.app/top.png`
+        content: `https://tic-tac-toe-handson.pages.dev/top.png`
       }
     ],
   ],
